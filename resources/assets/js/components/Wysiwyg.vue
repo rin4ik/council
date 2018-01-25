@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom:5px">
+  <div style="margin-bottom:5px ;">
        <input id="trix" type="hidden" :name="name" :value="value">
   <trix-editor id="body" ref="trix" input="trix" :placeholder="placeholder" style="background-color:white;" ></trix-editor>
   </div>

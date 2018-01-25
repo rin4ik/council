@@ -22,8 +22,8 @@
                                 <div class="form-group">
                                         <wysiwyg v-model="body"></wysiwyg>
                                 </div>
-                                <button class="button is-info caps">Update</button>
-                                <button class="button is-danger is-small caps" @click="editing=false" 
+                                <button class="btn btn-xs btn-success caps">Update</button>
+                                <button class="btn btn-xs btn-danger caps" @click="editing=false" 
                                 type="button">Cancel</button>
                                 </form>
                         </div>

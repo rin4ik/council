@@ -24,6 +24,6 @@ Vue.component('user-notifications', require('./components/UserNotifications.vue'
 Vue.component('avatar-form', require('./components/AvatarForm.vue'));
 Vue.component('wysiwyg', require('./components/Wysiwyg.vue'));
 
-const app = new Vue({
+new Vue({
     el: '#app'
 });

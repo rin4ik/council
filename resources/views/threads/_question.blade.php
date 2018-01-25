@@ -11,8 +11,8 @@
 		<div class="md-form">
 			<wysiwyg v-model="form.body" :value="form.body"></wysiwyg>
 
-			<button class="button is-info caps" @click="update">Update</button>
-			<button class="button is-danger caps" @click="cancel" style="box-shadow:0">Cancel</button>
+			<button class="btn btn-xs btn-success caps" @click="update">Update</button>
+			<button class="btn btn-xs btn-danger caps" @click="cancel" style="box-shadow:0">Cancel</button>
 
 		</div>
 
