@@ -9,7 +9,6 @@
     text-transform: uppercase;
     font-size: small;
     font-weight: 700;
-    font-family: Montserrat, Helvetica, Arial, sans-serif;
 }
 
 .shadow {
@@ -55,6 +54,8 @@ span.ais-highlight em {
 .btn-file {
     position: relative;
     overflow: hidden;
+    margin-top: 4px;
+    text-transform: uppercase;
 }
 
 .btn-file input[type=file] {
