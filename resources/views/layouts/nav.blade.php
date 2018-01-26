@@ -1,6 +1,6 @@
-<nav class="navbar shadow" style="background-color:rgb(111, 109, 230)">
+<nav class="navbar shadow " style="background-color:rgb(101, 99, 230)">
 
-	<div class="container">
+	<div class="container ">
 		<div class="navbar-header">
 
 			<!-- Collapsed Hamburger -->
@@ -21,8 +21,9 @@
 			<!-- Left Side Of Navbar -->
 			<ul class="nav navbar-nav">
 
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+				<li class="dropdown ">
+					<a href="#" class="dropdown-toggle caps" style="color: white;" data-toggle="dropdown" role="button" aria-expanded="false"
+					 aria-haspopup="true">
 						Browse
 						<span class="caret"></span>
 					</a>
@@ -45,10 +46,11 @@
 					</ul>
 				</li>
 				<li>
-					<a href="/threads/create" style="color: white;">New Thread</a>
+					<a class="caps" href="/threads/create" style="color: white;">New Thread</a>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true " style="color: white;">
+					<a href="#" class="dropdown-toggle caps" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true "
+					 style="color: white;">
 						Channels
 						<span class="caret"></span>
 					</a>
@@ -71,15 +73,16 @@
 				<!-- Authentication Links -->
 				@guest
 				<li>
-					<a href="{{ route('login') }}" style="color: white;">Login</a>
+					<a class="caps" href="{{ route('login') }}" style="color: white;">Login</a>
 				</li>
 				<li>
-					<a href="{{ route('register') }} " style="color: white;">Register</a>
+					<a class="caps" href="{{ route('register') }} " style="color: white;">Register</a>
 				</li>
 				@else
 				<user-notifications></user-notifications>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style="color: white;">
+					<a class="caps" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"
+					 style="color: white;">
 						{{ Auth::user()->name }}
 						<span class="caret"></span>
 					</a>

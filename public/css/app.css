@@ -5063,6 +5063,7 @@ tbody.collapse.in {
   display: block;
   padding: 3px 20px;
   clear: both;
+  margin-left: -5px;
   font-weight: normal;
   line-height: 1.6;
   color: #333333;
@@ -5071,9 +5072,14 @@ tbody.collapse.in {
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
+  width: 97.2%;
   text-decoration: none;
+  margin-left: 2px;
+  border-radius: 3px;
   color: #fdfdfd;
-  background-color: #6f6de6;
+  background-color: #7272d6;
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16), 0 0 4px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16), 0 0 4px 0 rgba(0, 0, 0, 0.12);
 }
 
 .dropdown-menu > .active > a,
@@ -5566,7 +5572,7 @@ tbody.collapse.in {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #7c7ae8;
+  background-color: #7171e7;
 }
 
 .nav > li.disabled > a {
@@ -5584,7 +5590,7 @@ tbody.collapse.in {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #7c7ae8;
+  background-color: #7171e7;
   border-color: #1f8dc9;
 }
 

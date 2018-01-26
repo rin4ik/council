@@ -83255,7 +83255,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "panel",
+      staticClass: "panel shadow",
       class: _vm.isBest ? "panel-success" : "panel-default",
       attrs: { id: "reply-" + _vm.id }
     },

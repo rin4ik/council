@@ -1,5 +1,5 @@
 <template>
-        <div :id="'reply-'+id" class="panel" :class="isBest? 'panel-success' : 'panel-default'">
+        <div :id="'reply-'+id" class="panel shadow" :class="isBest? 'panel-success' : 'panel-default'">
                 <div class="panel-heading" style="padding-top:1px;padding-bottom:1px;">
 
                         <div class="level">
