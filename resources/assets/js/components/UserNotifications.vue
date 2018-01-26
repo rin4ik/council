@@ -11,6 +11,14 @@
          </li>
      </ul>
  </li>
+ <li class="dropdown" v-else>
+ <a href="#" class="dropdown-complete" data-toggle="dropdown" style="color: white;" >
+        <i class="fa fa-bell" aria-hidden="true"></i>
+     <span class=" dropdown message-count" v-text="notifications.length"></span>
+        
+    </a>
+        
+ </li>
 </template>
 <script>
 export default {

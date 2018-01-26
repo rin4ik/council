@@ -24,17 +24,16 @@ button,
 
 .message-count {
     position: absolute;
-    top: 10px;
+    top: 13px;
     right: 7px;
-    font-size: .4em;
-    background: rgb(241, 60, 54);
+    font-size: .16em;
+    background: rgb(247, 58, 58);
     color: white;
     width: 14px;
     height: 14px;
     text-align: center;
-    line-height: 14px;
+    line-height: 12px;
     border-radius: 50%;
-    box-shadow: 0 0 1px #333;
 }
 
 input,
