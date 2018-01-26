@@ -15,6 +15,10 @@
     box-shadow: 0 3px 3px 0 rgba(192, 176, 176, 0.16), 0 0 4px 0 rgba(187, 167, 167, 0.12);
 }
 
+.shadow:hover {
+    box-shadow: 0 5px 111px 0 rgba(192, 176, 176, 0.16), 0 5 8px 0 rgba(187, 167, 167, 0.12);
+}
+
 .btn,
 button,
 .button.is-small,
@@ -24,10 +28,10 @@ button,
 
 .message-count {
     position: absolute;
-    top: 13px;
-    right: 7px;
+    top: 12px;
+    right: 8px;
     font-size: .16em;
-    background: rgb(247, 58, 58);
+    background: rgb(250, 36, 29);
     color: white;
     width: 14px;
     height: 14px;

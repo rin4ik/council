@@ -2,7 +2,7 @@
 	<div class="panel-heading alert-success">
 
 		<div class="level">
-			<span class="flex" style="font-weight: 600;">
+			<span class="flex">
 				{{$heading}}
 			</span>
 			<span>

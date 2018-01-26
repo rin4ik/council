@@ -84201,7 +84201,7 @@ var render = function() {
           },
           [
             _c("i", {
-              staticClass: "fa fa-bell",
+              staticClass: "fa fa-bell fa-lg",
               attrs: { "aria-hidden": "true" }
             }),
             _vm._v(" "),
@@ -84240,7 +84240,7 @@ var render = function() {
           },
           [
             _c("i", {
-              staticClass: "fa fa-bell",
+              staticClass: "fa fa-bell fa-lg",
               attrs: { "aria-hidden": "true" }
             }),
             _vm._v(" "),
