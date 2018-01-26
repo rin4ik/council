@@ -1,6 +1,6 @@
 <template>
         <div :id="'reply-'+id" class="panel" :class="isBest? 'panel-success' : 'panel-default'">
-                <div class="panel-heading" style="">
+                <div class="panel-heading" style="padding-top:1px;padding-bottom:1px;">
 
                         <div class="level">
                                 <h5 class="flex">
@@ -8,8 +8,8 @@
                                         </a> said <span v-text="ago"></span>
                                 </h5>
                                 <div v-if="authorize('owns',reply)">                       
-                        <button type="submit" class="btn btn-link" style="font-weight: 700; width:30px;margin-top: -68px;
-                        margin-right: -17.5px; height:20px;" @click="destroy">
+                        <button type="submit" class="btn btn-link" style="font-weight: 700; width:30px;margin-top: -45px;
+                        margin-right: -19px; height:20px;" @click="destroy">
                                         <i class="fa fa-window-close" style="color:rgba(24, 24, 26, 0.77)" aria-hidden="true"></i>
 
                                 </button>

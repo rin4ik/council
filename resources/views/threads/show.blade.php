@@ -8,10 +8,12 @@
 
 				<replies @added="repliesCount++" @removed="repliesCount--"></replies>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4" v-cloak>
 
-				<div class="panel panel-default">
+				<div class="panel panel-default shadow">
+					<img src="{{ asset('img/tab.jpg') }}" class="shadow" alt="" width="358px" style="position:inherit">
 					<div class="panel-body">
+
 						<p>
 							This thread was published {{ $thread->created_at->diffForHumans() }} by
 							<a href="{{ route('profile', $thread->creator) }}">{{ $thread->creator->name }}</a>, and currently has

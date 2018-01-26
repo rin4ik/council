@@ -1,5 +1,5 @@
 {{-- editin the question --}}
-<div class="panel panel-default" v-if="editing">
+<div class="panel panel-default shadow" v-if="editing">
 	<div class="panel-heading">
 
 		<input style="
@@ -20,7 +20,7 @@
 
 </div>
 {{-- viewing the question --}}
-<div class="panel panel-default" v-else>
+<div class="panel panel-default shadow" v-else>
 	<div class="panel-heading">
 		<div class="level">
 
@@ -45,7 +45,7 @@
 		</div>
 	</div>
 
-	<div class="panel-body" v-html="form.body">
+	<div class="panel-body " v-html="form.body">
 
 	</div>
 	<div v-if="authorize( 'owns' ,thread)">

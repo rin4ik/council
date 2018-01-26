@@ -1,5 +1,5 @@
 @forelse($threads as $thread)
-<div class="panel panel-default">
+<div class="panel panel-default shadow">
 	<div class="panel-heading" style="padding: 0px;
 padding-left: 10px; padding-right:10px;">
 		<div class="level">

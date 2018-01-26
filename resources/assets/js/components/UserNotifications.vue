@@ -1,6 +1,6 @@
 <template>
 <li class="dropdown" v-if="notifications.length">
-     <a href="#" class="dropdown-complete" data-toggle="dropdown">
+     <a href="#" class="dropdown-complete" data-toggle="dropdown" style="color: #a5d1ff;" >
         <i class="fa fa-bell" aria-hidden="true"></i>
      </a>
      <ul class="dropdown-menu">

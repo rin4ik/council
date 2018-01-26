@@ -22,7 +22,7 @@
 			<ul class="nav navbar-nav">
 
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+					<a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
 						Browse
 						<span class="caret"></span>
 					</a>
@@ -45,10 +45,10 @@
 					</ul>
 				</li>
 				<li>
-					<a href="/threads/create">New Thread</a>
+					<a href="/threads/create" style="color: white;">New Thread</a>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true " style="color: white;">
 						Channels
 						<span class="caret"></span>
 					</a>
@@ -71,15 +71,15 @@
 				<!-- Authentication Links -->
 				@guest
 				<li>
-					<a href="{{ route('login') }}">Login</a>
+					<a href="{{ route('login') }}" style="color: white;">Login</a>
 				</li>
 				<li>
-					<a href="{{ route('register') }}">Register</a>
+					<a href="{{ route('register') }} " style="color: white;">Register</a>
 				</li>
 				@else
 				<user-notifications></user-notifications>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style="color: white;">
 						{{ Auth::user()->name }}
 						<span class="caret"></span>
 					</a>

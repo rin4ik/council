@@ -83260,46 +83260,53 @@ var render = function() {
       attrs: { id: "reply-" + _vm.id }
     },
     [
-      _c("div", { staticClass: "panel-heading" }, [
-        _c("div", { staticClass: "level" }, [
-          _c("h5", { staticClass: "flex" }, [
-            _c("a", {
-              staticStyle: { "font-size": "16px" },
-              attrs: { href: "/profiles/" + _vm.reply.owner.name },
-              domProps: { textContent: _vm._s(_vm.reply.owner.name) }
-            }),
-            _vm._v(" said "),
-            _c("span", { domProps: { textContent: _vm._s(_vm.ago) } })
-          ]),
-          _vm._v(" "),
-          _vm.authorize("owns", _vm.reply)
-            ? _c("div", [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-link",
-                    staticStyle: {
-                      "font-weight": "700",
-                      width: "30px",
-                      "margin-top": "-68px",
-                      "margin-right": "-17.5px",
-                      height: "20px"
+      _c(
+        "div",
+        {
+          staticClass: "panel-heading",
+          staticStyle: { "padding-top": "1px", "padding-bottom": "1px" }
+        },
+        [
+          _c("div", { staticClass: "level" }, [
+            _c("h5", { staticClass: "flex" }, [
+              _c("a", {
+                staticStyle: { "font-size": "16px" },
+                attrs: { href: "/profiles/" + _vm.reply.owner.name },
+                domProps: { textContent: _vm._s(_vm.reply.owner.name) }
+              }),
+              _vm._v(" said "),
+              _c("span", { domProps: { textContent: _vm._s(_vm.ago) } })
+            ]),
+            _vm._v(" "),
+            _vm.authorize("owns", _vm.reply)
+              ? _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-link",
+                      staticStyle: {
+                        "font-weight": "700",
+                        width: "30px",
+                        "margin-top": "-45px",
+                        "margin-right": "-19px",
+                        height: "20px"
+                      },
+                      attrs: { type: "submit" },
+                      on: { click: _vm.destroy }
                     },
-                    attrs: { type: "submit" },
-                    on: { click: _vm.destroy }
-                  },
-                  [
-                    _c("i", {
-                      staticClass: "fa fa-window-close",
-                      staticStyle: { color: "rgba(24, 24, 26, 0.77)" },
-                      attrs: { "aria-hidden": "true" }
-                    })
-                  ]
-                )
-              ])
-            : _vm._e()
-        ])
-      ]),
+                    [
+                      _c("i", {
+                        staticClass: "fa fa-window-close",
+                        staticStyle: { color: "rgba(24, 24, 26, 0.77)" },
+                        attrs: { "aria-hidden": "true" }
+                      })
+                    ]
+                  )
+                ])
+              : _vm._e()
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "panel-body" }, [
         _vm.editing
@@ -84206,6 +84213,7 @@ var staticRenderFns = [
       "a",
       {
         staticClass: "dropdown-complete",
+        staticStyle: { color: "#a5d1ff" },
         attrs: { href: "#", "data-toggle": "dropdown" }
       },
       [_c("i", { staticClass: "fa fa-bell", attrs: { "aria-hidden": "true" } })]

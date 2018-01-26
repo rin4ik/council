@@ -5,19 +5,22 @@
 			@include('threads._list')
 		</div>
 		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading" style=" text-align:center">
+			<div class="panel panel-default shadow">
+				<div class="panel-heading " style=" text-align:center">
 					Search
 				</div>
 
 				<div class="panel-body ">
 					<form method="GET" action="/threads/search">
-						<input type="text" style="box-sizing:inherit" placeholder="Search for something..." class="form-control" name="q" id="">
-						<button type="submit" class="button shadow caps btn-primary" style=" display:block;
+						<input type="text" style="box-sizing:inherit;margin-bottom	:12px;" placeholder="Search for something..." class="form-control"
+						 name="q" id="">
+						<button type="submit" class="btn shadow  btn-primary" style=" display:block;
 						text-align:center ;
+						padding-top:2px;
 						
-						margin:0 auto">
-							<b class="caps"> Search</b>
+						padding-bottom:2px;
+						margin:0 auto ;">
+							SEARCH
 
 						</button>
 					</form>
@@ -28,8 +31,8 @@
 			<!--/.Card content-->
 
 			@if(count($trending))
-			<div class="panel panel-default">
-				<div class="panel-heading" style="border-radius: 5px; text-align:center">
+			<div class="panel panel-default shadow">
+				<div class="panel-heading" style="text-align:center">
 					Trending Threads
 				</div>
 
