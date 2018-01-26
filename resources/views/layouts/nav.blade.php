@@ -78,7 +78,8 @@
 				<li>
 					<a class="caps" href="{{ route('register') }} " style="color: white;">Register</a>
 				</li>
-				@else
+				@else {{--
+				<span class=" dropdown message-count">{{ Auth::user()->notifications->count() }}</span> --}}
 				<user-notifications></user-notifications>
 				<li class="dropdown">
 					<a class="caps" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"

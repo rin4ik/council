@@ -2,7 +2,9 @@
 <li class="dropdown" v-if="notifications.length">
      <a href="#" class="dropdown-complete" data-toggle="dropdown" style="color: white;" >
         <i class="fa fa-bell" aria-hidden="true"></i>
+     <span class=" dropdown message-count" v-text="notifications.length"></span>
      </a>
+    
      <ul class="dropdown-menu">
          <li v-for="notification in notifications" :key="notification.id">
              <a :href="notification.data.link" v-text="notification.data.message" @click="markAsRead(notification)"></a>

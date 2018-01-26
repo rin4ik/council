@@ -84150,6 +84150,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -84182,7 +84184,25 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.notifications.length
     ? _c("li", { staticClass: "dropdown" }, [
-        _vm._m(0),
+        _c(
+          "a",
+          {
+            staticClass: "dropdown-complete",
+            staticStyle: { color: "white" },
+            attrs: { href: "#", "data-toggle": "dropdown" }
+          },
+          [
+            _c("i", {
+              staticClass: "fa fa-bell",
+              attrs: { "aria-hidden": "true" }
+            }),
+            _vm._v(" "),
+            _c("span", {
+              staticClass: " dropdown message-count",
+              domProps: { textContent: _vm._s(_vm.notifications.length) }
+            })
+          ]
+        ),
         _vm._v(" "),
         _c(
           "ul",
@@ -84204,22 +84224,7 @@ var render = function() {
       ])
     : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-complete",
-        staticStyle: { color: "white" },
-        attrs: { href: "#", "data-toggle": "dropdown" }
-      },
-      [_c("i", { staticClass: "fa fa-bell", attrs: { "aria-hidden": "true" } })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
