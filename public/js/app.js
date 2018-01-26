@@ -84213,7 +84213,7 @@ var staticRenderFns = [
       "a",
       {
         staticClass: "dropdown-complete",
-        staticStyle: { color: "#a5d1ff" },
+        staticStyle: { color: "white" },
         attrs: { href: "#", "data-toggle": "dropdown" }
       },
       [_c("i", { staticClass: "fa fa-bell", attrs: { "aria-hidden": "true" } })]
