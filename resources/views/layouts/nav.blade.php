@@ -1,4 +1,4 @@
-<nav class="navbar shadow " style="background-color:rgb(91, 89, 234)">
+<nav class="navbar shadow " style="background-color:rgb(72, 71, 138)">
 
 	<div class="container ">
 		<div class="navbar-header">

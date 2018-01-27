@@ -40,7 +40,7 @@
 								<p class="text-danger">{{ $errors->first('body') }}</p>
 							</div>
 						</div>
-						<div class="g-recaptcha" data-sitekey="6Lez7UAUAAAAAKp4qnOA1I6VSK46bn9gQUtJ3aPy"></div>
+						<div class="g-recaptcha" data-sitekey="{{config('council.recaptcha.key')}}"></div>
 						<div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
 							<p class="text-danger">{{ $errors->first('g-recaptcha-response')}}</p>
 						</div>
