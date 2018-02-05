@@ -9,14 +9,16 @@
     text-transform: uppercase;
     font-size: small;
     font-weight: 700;
+
 }
 
 .shadow {
-    box-shadow: 0 3px 3px 0 rgba(192, 176, 176, 0.16), 0 0 4px 0 rgba(187, 167, 167, 0.12);
+
+	box-shadow:0 2px 2px #a1a1a257
 }
 
-.shadow:hover {
-    box-shadow: 0 5px 111px 0 rgba(192, 176, 176, 0.16), 0 5 8px 0 rgba(187, 167, 167, 0.12);
+.shadow:focus {
+    box-shadow: 0 5px 111px 0 rgba(189, 30, 30, 0.16), 0 5 8px 0 rgba(104, 13, 13, 0.12);
 }
 
 .btn,
