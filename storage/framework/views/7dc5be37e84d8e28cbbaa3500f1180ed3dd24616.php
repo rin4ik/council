@@ -1,10 +1,10 @@
-@extends('layouts.app') @section('content')
+ <?php $__env->startSection('content'); ?>
 <div class="container">
 	<div class="row">
 
 		<div class="col-md-8">
 
-			@include('threads._list')
+			<?php echo $__env->make('threads._list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 		</div>
 		<div class="col-md-4">
 			<div class="panel panel-default shadow">
@@ -32,29 +32,30 @@
 
 			<!--/.Card content-->
 
-			@if(count($trending))
+			<?php if(count($trending)): ?>
 			<div class="panel panel-default shadow">
 				<div class="panel-heading" style="text-align:center">
 					Trending Threads
 				</div>
 
 				<ul class="list-group">
-					@foreach($trending as $thread)
+					<?php $__currentLoopData = $trending; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
 					<li class="list-group-item">
-						<a href="{{url($thread->path)}}">
-							<p>{{$thread->title}}</p>
+						<a href="<?php echo e(url($thread->path)); ?>">
+							<p><?php echo e($thread->title); ?></p>
 						</a>
 					</li>
-					@endforeach
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 				</ul>
 
 			</div>
-			@endif
+			<?php endif; ?>
 
 
 
 		</div>
 	</div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

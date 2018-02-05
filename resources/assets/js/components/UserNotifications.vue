@@ -2,7 +2,7 @@
 <li class="dropdown" v-if="notifications.length">
      <a href="#" class="dropdown-complete" data-toggle="dropdown" style="color: white;" >
         <i class="fa fa-bell" aria-hidden="true" ></i>
-     <span class=" dropdown message-count" v-text="notifications.length"></span>
+     <span class=" dropdown message-count" ></span>
      </a>
     
      <ul class="dropdown-menu">
@@ -13,8 +13,7 @@
  </li>
  <li class="dropdown" v-else>
  <a href="#" class="dropdown-complete" data-toggle="dropdown" style="color: white;" >
-        <i class="fa fa-bell" aria-hidden="true"></i>
-     <span class=" dropdown message-count" v-text="notifications.length"></span>
+        <i class="fa fa-bell" aria-hidden="true"></i> 
         
     </a>
         

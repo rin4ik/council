@@ -12,7 +12,7 @@ export default {
             flash('Reply has been deleted');
         },
         add(item) {
-            this.items.push(item);
+            this.items.unshift(item);
             this.$emit('added');
         }
     }
