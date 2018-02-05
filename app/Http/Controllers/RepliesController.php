@@ -1,9 +1,9 @@
 <?php
-
+                                                                
 namespace App\Http\Controllers;
-
-use App\Thread;
+       
 use App\Reply;
+use App\Thread;
 use App\Http\Requests\CreatePostRequest;
 
 class RepliesController extends Controller
@@ -28,7 +28,6 @@ class RepliesController extends Controller
                 'body' => request('body'),
                 'user_id' => auth()->id()
             ])->load('owner');
-
         return back()
         ->with('flash', 'Your reply has been left');
     }

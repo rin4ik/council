@@ -29,13 +29,14 @@ class ThreadsController extends Controller
  * @param Trending $trending
  * @return void
  */
-    public function index(Channel $channel, ThreadFilters $filters, Trending $trending)
+    public function index(Request $request,Channel $channel, ThreadFilters $filters, Trending $trending)
     {
         $threads = $this->getThreads($channel, $filters);
 
         if (request()->wantsJson()) {
             return $threads;
         }
+
         return view('threads.index',
         ['threads'=>$threads,
         'trending'=>$trending->get()]);
@@ -87,6 +88,7 @@ class ThreadsController extends Controller
         if(request()->wantsJson()){
             return response($thread, 201);
         }
+        
         return redirect($thread->path())
         ->with('flash', 'Your thread has been published!');
     }
