@@ -28,7 +28,7 @@
 
 			<span class="flex" style="
                     font-size: 18px;">
-				<a href="{{ route('profile', $thread->creator) }}">{{ $thread->creator->name }}</a>
+				<a href="{{ route('profile', $thread->creator) }}">{{ $thread->creator->name }}</a> <span style="color:#ef6733;font-size: 15px;"> ({{$thread->creator->reputation}} XP)</span>
 				posted:
 				<span v-text="form.title"></span>
 			</span>

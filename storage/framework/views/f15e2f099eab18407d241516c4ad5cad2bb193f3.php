@@ -28,7 +28,7 @@
 
 			<span class="flex" style="
                     font-size: 18px;">
-				<a href="<?php echo e(route('profile', $thread->creator)); ?>"><?php echo e($thread->creator->name); ?></a>
+				<a href="<?php echo e(route('profile', $thread->creator)); ?>"><?php echo e($thread->creator->name); ?></a> <span style="color:#ef6733;font-size: 15px;"> (<?php echo e($thread->creator->reputation); ?> XP)</span>
 				posted:
 				<span v-text="form.title"></span>
 			</span>

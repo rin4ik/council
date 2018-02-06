@@ -20,10 +20,13 @@ class Thread extends Model
         parent::boot();
         static::deleting(function ($thread) {
             $thread->replies->each->delete();
+            // $thread->creator->decrement('reputation',Reputation::THREAD_WAS_PUBLISHED);
+            Reputation::reduce($thread->creator,Reputation::THREAD_WAS_PUBLISHED);
+            
         });
         static::created(function ($thread){
            $thread->update(['slug'=>$thread->title]);
-        (new Reputation)->award($thread->creator,Reputation::THREAD_WAS_PUBLISHED);
+        Reputation::award($thread->creator,Reputation::THREAD_WAS_PUBLISHED);
     });
  }
 

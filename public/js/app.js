@@ -84331,6 +84331,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -84349,6 +84352,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return this.authorize(function (user) {
         return _this.user.id === user.id;
       });
+    },
+    reputation: function reputation() {
+      return "(" + this.user.reputation + " XP)";
     }
   },
   created: function created() {},
@@ -84504,9 +84510,22 @@ var render = function() {
         attrs: { src: _vm.avatar, width: "100", height: "100" }
       }),
       _vm._v(" "),
-      _c("h1", {
-        domProps: { textContent: _vm._s(_vm.uppercase(_vm.user.name)) }
-      })
+      _c("h1", [
+        _vm._v("\n" + _vm._s(_vm.uppercase(_vm.user.name)) + "\n"),
+        _vm._v(" "),
+        _c(
+          "small",
+          {
+            staticStyle: {
+              color: "#ef6733",
+              "font-size": "20px",
+              "font-weight": "600"
+            },
+            domProps: { textContent: _vm._s(_vm.reputation) }
+          },
+          [_vm._v(" EXPERIENCE")]
+        )
+      ])
     ]),
     _vm._v(" "),
     _vm.canUpdate
