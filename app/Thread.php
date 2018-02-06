@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Reply;
+use  App\Reputation;
 use Laravel\Scout\Searchable;
 use App\Events\ThreadReceivedNewReply;
 use Illuminate\Database\Eloquent\Model;
@@ -21,10 +22,10 @@ class Thread extends Model
             $thread->replies->each->delete();
         });
         static::created(function ($thread){
-            $thread->update(['slug'=>$thread->title]);
-            $thread->creator->increment('reputation',10);
-        });
-    }
+           $thread->update(['slug'=>$thread->title]);
+        (new Reputation)->award($thread->creator,Reputation::THREAD_WAS_PUBLISHED);
+    });
+ }
 
     public function path()
     {
@@ -111,7 +112,7 @@ class Thread extends Model
     public function markBestReply(Reply $reply)
     {
        $this->update(['best_reply_id' => $reply->id]);
-       $reply->owner->increment('reputation',50);
+      (new Reputation)->award($reply->owner,Reputation::BEST_REPLY_AWARDED);
     }
     public function toSearchableArray()
     {

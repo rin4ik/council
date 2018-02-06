@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
@@ -18,13 +18,9 @@ class Reply extends Model
         parent::boot();
         static::created(function ($reply) {
             $reply->thread->increment('replies_count');
-            $reply->owner->increment('reputation', 2);
+            (new Reputation)->award($reply->owner, Reputation::REPLY_POSTED);
         });
         static::deleted(function ($reply) {
-            // if ($reply->isBest()) {
-            //     $reply->thread->update(['best_reply_id' => null]);
-            // }
-
             $reply->thread->decrement('replies_count');
         });
     }
