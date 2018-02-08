@@ -9,12 +9,11 @@
 	<link rel="icon" href="/img/img10.png">
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<script src="https://use.fontawesome.com/21fa307658.js"></script>
 	<title>Forum</title>
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
+
 
 	<script>
 		window.App={!!json_encode(['csrfToken'=>csrf_token(),
@@ -27,6 +26,7 @@
 </head>
 
 <body>
+	
 	<div id="app">
 		@include('layouts.nav') @yield('content')
 		<flash message="{{session('flash')}}"></flash>

@@ -1,5 +1,5 @@
  <?php $__env->startComponent('profiles.activities.activity'); ?> <?php $__env->slot('heading'); ?>
-<i class="fa fa-reply" aria-hidden="true" style="margin-right:2px;"> </i>
+<i class="glyphicon glyphicon-share-alt" aria-hidden="true" style="margin-right:2px;"> </i>
 
 
 <?php echo e($profileUser->name); ?> replied to

@@ -50,6 +50,6 @@
 	</div>
 	<div v-if="authorize( 'owns' ,thread)">
 		<button class="btn is-small btn-link caps" @click="toggleEdit " v-cloak>
-			<i class="fa fa-pencil-square-o " style="color:rgb(37, 87, 188) " aria-hidden="true "></i> Edit</button>
+			<i class="glyphicon glyphicon-edit"  aria-hidden="true "></i> Edit</button>
 	</div>
 </div>

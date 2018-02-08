@@ -9,15 +9,14 @@
 	<title>Forum</title>
 
 	<!-- Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
+	rel="stylesheet">
 	<!-- Styles -->
 	<style>
 		html,
 		body {
 			background-color: #eee0;
 			color: #FFF;
-			font-family: 'Rajdhani', sans-serif;
-
+		
 			font-weight: 500;
 			height: 100vh;
 			margin: 0;

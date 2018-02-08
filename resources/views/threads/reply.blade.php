@@ -35,7 +35,7 @@
                 <div class="panel-footer level" style="padding: 0; background-color: white;">
                         @can ('update', $reply)
                         <button class="btn btn-link " @click="editing = true">
-                                <i class="fa fa-pencil-square-o" style="color:rgb(37, 87, 188)" aria-hidden="true"></i> Edit</button>
+                                <i class="glyphicon glyphicon-bell" style="color:rgb(37, 87, 188)" aria-hidden="true"></i> Edit</button>
                         @endcan
                         @auth
                         <favorite :reply="{{$reply}}"></favorite>

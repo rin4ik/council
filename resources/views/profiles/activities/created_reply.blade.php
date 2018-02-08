@@ -1,5 +1,5 @@
  @component('profiles.activities.activity') @slot('heading')
-<i class="fa fa-reply" aria-hidden="true" style="margin-right:2px;"> </i>
+<i class="glyphicon glyphicon-share-alt" aria-hidden="true" style="margin-right:2px;"> </i>
 
 
 {{$profileUser->name}} replied to

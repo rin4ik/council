@@ -1,5 +1,5 @@
 <?php $__env->startComponent('profiles.activities.activity'); ?> <?php $__env->slot('heading'); ?>
-<i class="fa fa-bullhorn" aria-hidden="true" style="
+<i class="glyphicon glyphicon-edit" aria-hidden="true" style="
     margin-right:2px;"> </i>
 <?php echo e($profileUser->name); ?> published
 <a href="<?php echo e($activ->subject->path()); ?>">

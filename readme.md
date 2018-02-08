@@ -6,7 +6,7 @@
  ### Step 1.
  
  > To run this project, you must have PHP 7 installed as a prerequisite.
- 
+
  Begin by cloning this repository to your machine, and installing all Composer dependencies.
  
  ```bash

@@ -1,6 +1,6 @@
 <template>
 <div><span class="btn btn-primary btn-file">Upload image
-<i class="fa fa-upload " aria-hidden="true"></i>
+<i class="	glyphicon glyphicon-download-alt " aria-hidden="true"></i>
 <input class="button" type="file" accept="image/*" @change="onChange">
     
 </span></div>

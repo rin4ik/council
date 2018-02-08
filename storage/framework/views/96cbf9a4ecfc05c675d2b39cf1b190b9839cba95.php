@@ -1,5 +1,5 @@
  <?php $__env->startComponent('profiles.activities.activity'); ?> <?php $__env->slot('heading'); ?>
-<i id="heart" class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+<i id="heart" class="	glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>
 
 <a href="<?php echo e($activ->subject->favorited->path()); ?>" style="
      margin-left:2px;">

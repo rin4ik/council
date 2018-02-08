@@ -10,7 +10,7 @@
                                 <div v-if="authorize('owns',reply)">                       
                         <button type="submit" class="btn btn-link" style="font-weight: 700; width:30px;margin-top: -45px;
                         margin-right: -19px; height:20px;" @click="destroy">
-                                        <i class="fa fa-window-close" style="color:rgba(24, 24, 26, 0.77)" aria-hidden="true"></i>
+                                        <i class="	glyphicon glyphicon-trash" style="color:rgba(24, 24, 26, 0.77);" aria-hidden="true"></i>
 
                                 </button>
                                 </div>
@@ -34,14 +34,14 @@
                       <div v-if="authorize('owns',reply)" style="padding: 0; background-color: white; float:left">
                         
                         <button class="btn is-small btn-link caps" @click="editing = true" style="box-shadow:0; padding-right:0">
-                                <i class="fa fa-pencil-square-o" style="color:rgb(37, 87, 188)" aria-hidden="true"></i> Edit</button>
+                                <i class="	glyphicon glyphicon-edit"  aria-hidden="true"></i> Edit</button>
                          </div>  
                          
                        
                                  <favorite :reply="reply" style="padding-left:10px;"></favorite> 
                                 
                                  <p v-if="signedIn" class="ml-a"><button class="btn btn-link caps" v-if="authorize('owns',reply.thread)" @click="markBestReply" v-show="!isBest" style="box-shadow:0;color:rgb(60, 150, 60)">Best Reply?</button></p>
-                                 <p class="ml-a" @click="markBestReply" v-show="isBest" style="color:#3c763d">Best <i class="fa fa-check-square-o" aria-hidden="true"></i></p>
+                                 <p class="ml-a" @click="markBestReply" style="color:#3c763d" v-show="isBest" >Best <i class="	glyphicon glyphicon-check " style="-webkit-text-stroke: 1px white;font-weight: 100;color:#3c763d" aria-hidden="true"></i></p>
                                    
                         </div>     
            

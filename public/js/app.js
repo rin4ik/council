@@ -82924,7 +82924,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   computed: {
     classes: function classes() {
-      return [this.active ? "fa-heart ol" : "fa-heart om"];
+      return [this.active ? "glyphicon-heart ol" : "glyphicon-heart-empty om"];
     }
   },
   created: function created() {},
@@ -82967,7 +82967,7 @@ var render = function() {
       _c("span", { domProps: { textContent: _vm._s(_vm.count) } }),
       _vm._v(" "),
       _c("i", {
-        staticClass: "fa",
+        staticClass: "glyphicon ",
         class: _vm.classes,
         attrs: { "aria-hidden": "true" }
       })
@@ -83296,7 +83296,7 @@ var render = function() {
                     },
                     [
                       _c("i", {
-                        staticClass: "fa fa-window-close",
+                        staticClass: "\tglyphicon glyphicon-trash",
                         staticStyle: { color: "rgba(24, 24, 26, 0.77)" },
                         attrs: { "aria-hidden": "true" }
                       })
@@ -83379,8 +83379,7 @@ var render = function() {
                     },
                     [
                       _c("i", {
-                        staticClass: "fa fa-pencil-square-o",
-                        staticStyle: { color: "rgb(37, 87, 188)" },
+                        staticClass: "\tglyphicon glyphicon-edit",
                         attrs: { "aria-hidden": "true" }
                       }),
                       _vm._v(" Edit")
@@ -83440,7 +83439,12 @@ var render = function() {
             [
               _vm._v("Best "),
               _c("i", {
-                staticClass: "fa fa-check-square-o",
+                staticClass: "\tglyphicon glyphicon-check ",
+                staticStyle: {
+                  "-webkit-text-stroke": "1px white",
+                  "font-weight": "100",
+                  color: "#3c763d"
+                },
                 attrs: { "aria-hidden": "true" }
               })
             ]
@@ -84227,7 +84231,7 @@ var staticRenderFns = [
       },
       [
         _c("i", {
-          staticClass: "fa fa-bell",
+          staticClass: "glyphicon glyphicon-bell",
           attrs: { "aria-hidden": "true" }
         }),
         _vm._v(" "),
@@ -84246,7 +84250,12 @@ var staticRenderFns = [
         staticStyle: { color: "white" },
         attrs: { href: "#", "data-toggle": "dropdown" }
       },
-      [_c("i", { staticClass: "fa fa-bell", attrs: { "aria-hidden": "true" } })]
+      [
+        _c("i", {
+          staticClass: "glyphicon glyphicon-bell",
+          attrs: { "aria-hidden": "true" }
+        })
+      ]
     )
   }
 ]
@@ -84473,7 +84482,7 @@ var render = function() {
     _c("span", { staticClass: "btn btn-primary btn-file" }, [
       _vm._v("Upload image\n"),
       _c("i", {
-        staticClass: "fa fa-upload ",
+        staticClass: "\tglyphicon glyphicon-download-alt ",
         attrs: { "aria-hidden": "true" }
       }),
       _vm._v(" "),

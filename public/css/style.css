@@ -9,12 +9,10 @@
     text-transform: uppercase;
     font-size: small;
     font-weight: 700;
-
 }
 
 .shadow {
-
-	box-shadow:0 2px 2px #a1a1a257
+    box-shadow: 0 2px 2px #a1a1a257
 }
 
 .shadow:focus {
@@ -53,9 +51,8 @@ textarea {
 }
 
 body {
-    font-family: 'Encode Sans Expanded', sans-serif;
     background-color: #fbfbfb;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 span.ais-highlight em {

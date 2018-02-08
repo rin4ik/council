@@ -1,6 +1,6 @@
 <template>
  <button type="submit"  @click='toggle' class="btn btn-link caps" :class="signedIn?'':'disabled'" style="padding-left:0px;  text-decoration:none;" >
-      <span v-text="count">  </span> <i class="fa" :class="classes" aria-hidden="true" ></i></button>
+      <span v-text="count">  </span> <i class="glyphicon " :class="classes" aria-hidden="true" ></i></button>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     classes() {
-      return [this.active ? "fa-heart ol" : "fa-heart om"];
+      return [this.active ? "glyphicon-heart ol" : "glyphicon-heart-empty om"];
     }
   },
   created() {},

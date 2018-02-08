@@ -9,7 +9,7 @@
 	<title>Forum</title>
 
 	<!-- Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
+	rel="stylesheet">
 	<!-- Styles -->
 	<style>
 		html,

@@ -9,12 +9,11 @@
 	<link rel="icon" href="/img/img10.png">
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-	<script src="https://use.fontawesome.com/21fa307658.js"></script>
 	<title>Forum</title>
 	<!-- Styles -->
 	<link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
 	<link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
+
 
 	<script>
 		window.App=<?php echo json_encode(['csrfToken'=>csrf_token(),
@@ -27,6 +26,7 @@
 </head>
 
 <body>
+	
 	<div id="app">
 		<?php echo $__env->make('layouts.nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> <?php echo $__env->yieldContent('content'); ?>
 		<flash message="<?php echo e(session('flash')); ?>"></flash>
