@@ -12,7 +12,6 @@
 
                         </div>
                     <?php endif; ?>
-
                     You are logged in!
                 </div>
             </div>

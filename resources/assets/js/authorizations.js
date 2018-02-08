@@ -10,6 +10,6 @@ module.exports = {
         return model[prop] === user.id
     },
     isAdmin() {
-        return ['Mirahmad', 'JohnDoe'].includes(user.name);
+        return user.isAdmin;
     }
 }

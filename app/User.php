@@ -11,11 +11,24 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+    * The attributes that are mass assignable.
+    *
+    * @var array
+    */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'avatar_path'
+    ];
+    /**
+     * The accessors to append to the model's array form.
      *
      * @var array
      */
-    protected $guarded = [];
+    protected $appends = [
+        'isAdmin'
+      ];
     protected $casts = ['confirmed' => 'boolean'];
     /**
      * The attributes that should be hidden for arrays.
@@ -29,6 +42,26 @@ class User extends Authenticatable
     public function getRouteKeyName()
     {
         return 'name';
+    }
+
+    /**
+     * Determine if the user is an administrator.
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return in_array($this->email, config('council.administrators'));
+    }
+
+    /**
+    * Determine if the user is an administrator.
+    *
+    * @return bool
+    */
+    public function getIsAdminAttribute()
+    {
+        return $this->isAdmin();
     }
 
     public function getAvatarPathAttribute($avatar)
@@ -46,11 +79,6 @@ class User extends Authenticatable
         $this->confirmed = true;
         $this->confirmation_token = null;
         $this->save();
-    }
-
-    public function isAdmin()
-    {
-        return in_array($this->name, ['Mirahmad', 'JohnDoe']);
     }
 
     public function visitedThreadCacheKey($thread)

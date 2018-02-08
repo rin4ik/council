@@ -18,16 +18,11 @@
  
  ### Step 2.
  
- Next, create a new database and reference its name and username/password within the project's `.env` file. In the example below, we've named the database, "council."
+Until an administration portal is available, manually insert any number of "channels" (think of these as forum categories) into the "channels" table in your database.
  
- ```
- DB_CONNECTION=mysql
- DB_HOST=127.0.0.1
- DB_PORT=3306
- DB_DATABASE=council
- DB_USERNAME=root
- DB_PASSWORD=
- ```
+ 1. Visit: http://council.test/register and register an account.
+ 1. Edit `config/council.php`, adding the email address of the account you just created.
+ 1. Visit: http://council.test/admin/channels and add at least one channel.  
  
  ### Step 3.
  

@@ -12,26 +12,30 @@ class LockThreadsTest extends TestCase
         $this->withExceptionHandling();
         $this->signIn();
         $thread = create('App\Thread', ['user_id' => auth()->id()]);
-        $this->post(route('locked-threads.store', $thread), ['locked' => true, ])->assertStatus(403);
-        $this->assertFalse(!!$thread->fresh()->locked);
+        $this->post(route('locked-threads.store', $thread))->assertStatus(403);
+        $this->assertFalse($thread->fresh()->locked);
     }
 
     /** @test */
     public function administrators_can_lock_threads()
     {
-        $this->signIn(factory('App\User')->states('administrator')->create());
+        $user = factory('App\User')->create();
+        config(['council.administrators' => [$user->email]]);
+        $this->signIn($user);
         $thread = create('App\Thread', ['user_id' => auth()->id()]);
-        $this->post(route('locked-threads.store', $thread), ['locked' => true, ])->assertStatus(200);
-        $this->assertTrue($thread->fresh()->locked, 'Failed asserting that the thread was locked');
+        $this->post(route('locked-threads.store', $thread));
+        $this->assertTrue($thread->fresh()->locked, 'Failed asserting that the thread was locked.');
     }
 
     /** @test */
     public function administrators_can_unlock_threads()
     {
-        $this->signIn(factory('App\User')->states('administrator')->create());
+        $user = factory('App\User')->create();
+        config(['council.administrators' => [$user->email]]);
+        $this->signIn($user);
         $thread = create('App\Thread', ['user_id' => auth()->id(), 'locked' => true]);
         $this->delete(route('locked-threads.destroy', $thread));
-        $this->assertFalse($thread->fresh()->locked);
+        $this->assertFalse($thread->fresh()->locked, 'Failed asserting that the thread was unlocked.');
     }
 
     /** @test */
@@ -39,9 +43,9 @@ class LockThreadsTest extends TestCase
     {
         $this->signIn();
         $thread = create('App\Thread', ['locked' => true]);
-        $thread->lock();
-        $this->assertTrue($thread->locked);
-        $this->post($thread->path() . '/replies', ['body' => 'Foobar', 'user_id' => create('App\User')->id
-       ])->assertStatus(422);
+        $this->post($thread->path() . '/replies', [
+             'body' => 'Foobar',
+             'user_id' => auth()->id()
+         ])->assertStatus(422);
     }
 }

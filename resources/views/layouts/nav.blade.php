@@ -81,6 +81,9 @@
 				@else {{--
 				<span class=" dropdown message-count">{{ Auth::user()->notifications->count() }}</span> --}}
 				<user-notifications></user-notifications>
+				@if (Auth::user()->isAdmin())
+		               <li><a style="color: white;" href="/admin"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
+				                  @endif
 				<li class="dropdown">
 					<a class="caps" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"
 					 style="color: white;">

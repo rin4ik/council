@@ -81,6 +81,9 @@
 				</li>
 				<?php else: ?> 
 				<user-notifications></user-notifications>
+				<?php if(Auth::user()->isAdmin()): ?>
+		               <li><a style="color: white;" href="/admin"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
+				                  <?php endif; ?>
 				<li class="dropdown">
 					<a class="caps" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"
 					 style="color: white;">
