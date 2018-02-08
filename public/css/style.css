@@ -15,15 +15,8 @@
     box-shadow: 0 2px 2px #a1a1a257
 }
 
-.shadow:focus {
-    box-shadow: 0 5px 111px 0 rgba(189, 30, 30, 0.16), 0 5 8px 0 rgba(104, 13, 13, 0.12);
-}
-
-.btn,
-button,
-.button.is-small,
-.button.is-link {
-    font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.shadow:hover {
+    box-shadow: 0 5px 111px 0 rgba(58, 5, 5, 0.16), 0 5 8px 0 rgba(68, 7, 7, 0.12);
 }
 
 .message-count {
@@ -76,7 +69,13 @@ span.ais-highlight em {
 }
 
 .btn {
-    font-family: sans-serif;
+    font-weight: 700;
+    ;
+}
+
+.smth:hover {
+    background-color: #1f8dc9;
+    color: white;
 }
 
 .btn-file input[type=file] {
