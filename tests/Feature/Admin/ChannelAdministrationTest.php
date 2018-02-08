@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 class ChannelAdministrationTest extends TestCase
 { 
-    protected function setUp()
+    public function setUp()
     {
         parent::setUp();
         $this->withExceptionHandling();
