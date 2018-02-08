@@ -12,11 +12,26 @@
 }
 
 .shadow {
-    box-shadow: 0 2px 2px #a1a1a257
+    box-shadow: 0 2px 2px #d3cece80
 }
 
-.shadow:hover {
-    box-shadow: 0 5px 111px 0 rgba(58, 5, 5, 0.16), 0 5 8px 0 rgba(68, 7, 7, 0.12);
+.spg {
+    text-decoration: none;
+    border-color: rgb(250, 36, 29);
+    color: rgb(250, 36, 29);
+    text-align: center;
+}
+
+.spg:hover {
+    background-color: rgb(250, 36, 29);
+    color: white;
+    box-shadow: 2px 2px 2px #7a7a7ad2
+}
+
+.spg:active {
+    background-color: rgb(250, 36, 29);
+    color: white;
+    box-shadow: 2px 2px 2px #7a7a7ad2
 }
 
 .message-count {
@@ -69,13 +84,22 @@ span.ais-highlight em {
 }
 
 .btn {
-    font-weight: 700;
-    ;
+    font-weight: 500;
+}
+
+.smth {
+    text-decoration: none;
+    display: block;
+    content: glyphicon glyphicon-search;
+    border-color: #1f8dc9;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .smth:hover {
     background-color: #1f8dc9;
     color: white;
+    box-shadow: 2px 2px 2px #7a7a7ad2
 }
 
 .btn-file input[type=file] {
@@ -108,6 +132,12 @@ span.ais-highlight em {
     border-radius: 0;
 }
 
+li.a:hover {
+    text-decoration: none
+}
+
+.btn-link:hover,
+.btn-link:focus,
 a:hover {
     text-decoration: none
 }
