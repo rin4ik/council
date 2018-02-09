@@ -7,7 +7,6 @@
     "require": {
         "php": ">=7.1.0",
         "algolia/algoliasearch-client-php": "^1.25",
-        "barryvdh/laravel-debugbar": "^3.1",
         "fideloper/proxy": "~3.3",
         "kitetail/zttp": "^0.3.0",
         "laravel/framework": "5.5.*",
@@ -19,6 +18,7 @@
         "twbs/bootstrap": "^3.3"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.1",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~1.0",
