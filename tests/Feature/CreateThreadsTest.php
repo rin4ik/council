@@ -54,14 +54,6 @@ class CreateThreadsTest extends TestCase
         ->assertSee($thread->body);
     }
 
- /** @test */
-    function a_thread_requires_recaptcha_verification()
-     {
-         unset(app()[Recaptcha::class]);
- 
-        $this->publishThread(['g-recaptcha-response' => 'test'])
-             ->assertSessionHasErrors('g-recaptcha-response');
-    }
     /** @test */
     public function thread_requires_a_title()
     {
