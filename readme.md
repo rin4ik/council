@@ -1,6 +1,4 @@
- #Council
- 
-[![Build Status](https://travis-ci.org/rin4ik/council.svg?branch=master)](https://travis-ci.org/rin4ik/council)
+ # Council [![Build Status](https://travis-ci.org/rin4ik/council.svg?branch=master)](https://travis-ci.org/rin4ik/council)
 
  ## Installation
  
