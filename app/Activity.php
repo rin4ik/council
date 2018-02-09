@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
-    protected $guarded=[];
+    protected $guarded = [];
 
     public function subject()
     {
         return $this->morphTo();
     }
-    public static function feed($user, $take=50)
+
+    public static function feed($user, $take = 50)
     {
         return static::where('user_id', $user->id)
         ->latest()

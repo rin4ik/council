@@ -1,7 +1,7 @@
 <?php
-                                                                
+
 namespace App\Http\Controllers;
-       
+
 use App\Reply;
 use App\Thread;
 use App\Http\Requests\CreatePostRequest;
@@ -28,6 +28,7 @@ class RepliesController extends Controller
                 'body' => request('body'),
                 'user_id' => auth()->id()
             ])->load('owner');
+
         return back()
         ->with('flash', 'Your reply has been left');
     }
@@ -40,6 +41,7 @@ class RepliesController extends Controller
         if (request()->expectsJson()) {
             return response(['status' => 'Reply deleted!']);
         }
+
         return back();
     }
 

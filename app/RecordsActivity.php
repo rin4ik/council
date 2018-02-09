@@ -18,16 +18,17 @@ trait RecordsActivity
             $model->activity()->delete();
         });
     }
-    /**
 
-  * Fetch all model events that require activity recording.
-       *
-      * @return array
-       */
+    /**
+     * Fetch all model events that require activity recording.
+     *
+     * @return array
+     */
     protected static function getActivitiesToRecord()
     {
         return ['created'];
     }
+
     protected function recordActivity($event)
     {
         $this->activity()->create([
@@ -35,13 +36,16 @@ trait RecordsActivity
         'type'=>$this->getActivityType($event)
     ]);
     }
+
     public function activity()
     {
         return $this->morphMany('\App\Activity', 'subject');
     }
+
     public function getActivityType($event)
     {
-        $type=strtolower((new \ReflectionClass($this))->getShortname());
+        $type = strtolower((new \ReflectionClass($this))->getShortname());
+
         return "{$event}_{$type}";
     }
 }

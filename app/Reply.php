@@ -37,10 +37,10 @@ class Reply extends Model
     }
 
     /**
-         * Determine if the reply was just published a moment ago.
-         *
-         * @return bool
-         */
+     * Determine if the reply was just published a moment ago.
+     *
+     * @return bool
+     */
     public function wasJustPublished()
     {
         return $this->created_at->gt(Carbon::now()->subMinute());
@@ -49,12 +49,13 @@ class Reply extends Model
     public function mentionedUsers()
     {
         preg_match_all('/@([\w\-]+)/', $this->body, $matches);
+
         return $matches[1];
     }
 
     public function path()
     {
-        return $this->thread->path() . "#reply-{$this->id}";
+        return $this->thread->path()."#reply-{$this->id}";
     }
 
     public function setBodyAttribute($body)

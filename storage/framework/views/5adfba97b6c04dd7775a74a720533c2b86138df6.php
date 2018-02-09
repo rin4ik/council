@@ -17,13 +17,13 @@
             <button type="submit" class="btn btn-primary">Add</button>
         </div>
 
-        <?php if(count($errors)): ?>
+        <?php if (count($errors)): ?>
             <ul class="alert alert-danger">
-                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach ($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <li><?php echo e($error); ?></li>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
         <?php endif; ?>
     </form>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('admin.layout.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('admin.layout.app', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>

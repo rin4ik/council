@@ -11,10 +11,10 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-    * The attributes that are mass assignable.
-    *
-    * @var array
-    */
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'email',
@@ -55,10 +55,10 @@ class User extends Authenticatable
     }
 
     /**
-    * Determine if the user is an administrator.
-    *
-    * @return bool
-    */
+     * Determine if the user is an administrator.
+     *
+     * @return bool
+     */
     public function getIsAdminAttribute()
     {
         return $this->isAdmin();
