@@ -1,7 +1,7 @@
 language: php
 
 php:
-  - 7.1
+  - 7.2
 
 before_script:
   - cp .env.travis .env
@@ -10,7 +10,6 @@ before_script:
 
 script:
   - php artisan key:generate
-  - vendor/bin/phpunit
 
 services:
   - redis-server
