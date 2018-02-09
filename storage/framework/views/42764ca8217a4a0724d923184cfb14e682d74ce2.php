@@ -12,7 +12,7 @@
 
 
     
-    <?php if(isset($subcopy)): ?>
+    <?php if (isset($subcopy)): ?>
         <?php $__env->slot('subcopy'); ?>
             <?php $__env->startComponent('mail::subcopy'); ?>
                 <?php echo e($subcopy); ?>

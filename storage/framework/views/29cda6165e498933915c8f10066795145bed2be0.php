@@ -61,14 +61,14 @@
 
 				<!--/.Card content-->
 
-				<?php if(count($trending)): ?>
+				<?php if (count($trending)): ?>
 				<div class="panel panel-default">
 					<div class="panel-heading" style="border-radius: 5px; text-align:center">
 						<b>Trending Threads</b>
 					</div>
 
 					<ul class="list-group">
-						<?php $__currentLoopData = $trending; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<?php $__currentLoopData = $trending; $__env->addLoop($__currentLoopData); foreach ($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
 						<li class="list-group-item">
 							<a href="<?php echo e(url($thread->path)); ?>">
@@ -88,4 +88,4 @@
 	</div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>

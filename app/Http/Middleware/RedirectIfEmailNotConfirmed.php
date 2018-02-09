@@ -19,6 +19,7 @@ class RedirectIfEmailNotConfirmed
         if (! $user->confirmed && ! $user->isAdmin()) {
             return redirect('/threads')->with('flash', 'You must first confirm your email address');
         }
+
         return $next($request);
     }
 }

@@ -9,7 +9,6 @@ abstract class Filters
     /**
      * @var Request
      */
-
     protected $request;
 
     /**
@@ -50,6 +49,7 @@ abstract class Filters
                 $this->$filter($value);
             }
         }
+
         return $this->builder;
     }
 

@@ -30,21 +30,23 @@ $factory->state(App\User::class, 'unconfirmed', function () {
     ];
 });
   $factory->state(App\User::class, 'administrator', function () {
-       return [
+      return [
         'isAdmin' => true
       ];
-   });
+  });
    $factory->define(App\Channel::class, function ($faker) {
-    $name = $faker->word;
-    return [
+       $name = $faker->word;
+
+       return [
         'name' => $name,
         'slug' => $name,
         'description' => $faker->sentence
     ];
-});
+   });
 
 $factory->define(App\Thread::class, function ($faker) {
     $title = $faker->sentence;
+
     return [
         'user_id' => function () {
             return factory('App\User')->create()->id;

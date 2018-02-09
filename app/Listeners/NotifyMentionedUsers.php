@@ -3,8 +3,8 @@
 namespace App\Listeners;
 
 use App\User;
-use App\Notifications\YouWereMentioned;
 use App\Events\ThreadReceivedNewReply;
+use App\Notifications\YouWereMentioned;
 
 class NotifyMentionedUsers
 {

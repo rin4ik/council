@@ -10,8 +10,10 @@ class SearchController extends Controller
     {
         if (request()->expectsJson()) {
             $search = request('q');
+
             return \App\Thread::search($search)->paginate(25);
         }
+
         return view('threads.search', [
             'trending' => $trending->get()
         ]);

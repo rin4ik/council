@@ -1,11 +1,11 @@
-<?php $__empty_1 = true; $__currentLoopData = $threads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+<?php $__empty_1 = true; $__currentLoopData = $threads; $__env->addLoop($__currentLoopData); foreach ($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 <div class="panel panel-default shadow">
 	<div class="panel-heading" style="padding: 0px;
 padding-left: 10px; padding-right:10px;">
 		<div class="level">
 			<h4 class="flex" style="margin: 6px; padding:4px; padding-left:0">
 				<a href="<?php echo e($thread->path()); ?>">
-					<?php if(auth()->check() && $thread->hasUpdatesFor(auth()->user())): ?>
+					<?php if (auth()->check() && $thread->hasUpdatesFor(auth()->user())): ?>
 					<p style="font-size:16px; margin: 5px;  color:rgb(16, 16, 16)"><?php echo e($thread->title); ?></p>
 					<?php else: ?>
 					<p style="font-size:16px;margin: 5px; color:rgb(80, 90, 96)"><?php echo e($thread->title); ?></p>

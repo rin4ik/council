@@ -30,6 +30,7 @@ class ChannelsController extends Controller
         if (request()->wantsJson()) {
             return response($channel, 201);
         }
+
         return redirect(route('admin.channels.index'))
             ->with('flash', 'Your channel has been created!');
     }
