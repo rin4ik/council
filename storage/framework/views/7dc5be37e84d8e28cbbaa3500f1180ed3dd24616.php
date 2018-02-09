@@ -17,8 +17,7 @@
 						<input type="text" style="box-sizing:inherit;margin-bottom	:12px;" placeholder="Search for something..." class="form-control"
 						 name="q" id="">
 						<button type="submit" class="btn smth shadow btn-link">
-						<i class="	
-						" style="-webkit-text-stroke: 1px white;height:1px;" aria-hidden="true"></i> SEARCH
+						 SEARCH
 							
 						</button>
 					</form>

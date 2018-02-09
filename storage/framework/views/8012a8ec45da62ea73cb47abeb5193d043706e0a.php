@@ -11,7 +11,7 @@
 
             <div class="col-md-10">
                 <div class="panel panel-default">
-                    <div class="panel-body">
+                    <div class="panel-body shadow">
                         <?php echo $__env->yieldContent('administration-content'); ?>
                     </div>
                 </div>

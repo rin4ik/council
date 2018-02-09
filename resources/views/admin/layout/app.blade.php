@@ -13,7 +13,7 @@
 
             <div class="col-md-10">
                 <div class="panel panel-default">
-                    <div class="panel-body">
+                    <div class="panel-body shadow">
                         @yield('administration-content')
                     </div>
                 </div>

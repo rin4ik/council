@@ -1,4 +1,4 @@
-<nav class="navbar shadow " style="background-color:rgb(72, 71, 138)">
+<nav class="navbar shadow " style="background-color:rgb(72, 71, 138); font-family:Montserrat,Helvetica,Arial,sans-serif;">
 
 	<div class="container ">
 		<div class="navbar-header">

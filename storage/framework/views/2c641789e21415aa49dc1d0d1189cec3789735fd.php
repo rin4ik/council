@@ -41,7 +41,7 @@
 								<p class="text-danger"><?php echo e($errors->first('body')); ?></p>
 							</div>
 						</div>
-						<div class="g-recaptcha" data-sitekey="<?php echo e(config('council.recaptcha.key')); ?>"></div>
+						<div class="g-recaptcha" data-sitekey="<?php echo e(config('services.recaptcha.key')); ?>"></div>
 						<div class="form-group<?php echo e($errors->has('g-recaptcha-response') ? ' has-error' : ''); ?>">
 							<p class="text-danger"><?php echo e($errors->first('g-recaptcha-response')); ?></p>
 						</div>

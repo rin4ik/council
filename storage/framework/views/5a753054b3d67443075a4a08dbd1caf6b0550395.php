@@ -6,9 +6,9 @@ padding-left: 10px; padding-right:10px;">
 			<h4 class="flex" style="margin: 6px; padding:4px; padding-left:0">
 				<a href="<?php echo e($thread->path()); ?>">
 					<?php if(auth()->check() && $thread->hasUpdatesFor(auth()->user())): ?>
-					<p style="font-size:17px; margin: 5px; margin-left:5px; color:rgb(16, 16, 16)"><?php echo e($thread->title); ?></p>
+					<p style="font-size:16px; margin: 5px;  color:rgb(16, 16, 16)"><?php echo e($thread->title); ?></p>
 					<?php else: ?>
-					<p style="font-size:17px;margin: 5px;margin-left:5px; color:rgb(80, 90, 96)"><?php echo e($thread->title); ?></p>
+					<p style="font-size:16px;margin: 5px; color:rgb(80, 90, 96)"><?php echo e($thread->title); ?></p>
 					<?php endif; ?>
 				</a>
 
