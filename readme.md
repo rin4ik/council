@@ -1,6 +1,7 @@
- > In order to install it on your machine follow steps below
+ #Council
  
- TODO
+[![Build Status](https://travis-ci.org/rin4ik/council.svg?branch=master)](https://travis-ci.org/rin4ik/council)
+
  ## Installation
  
  ### Step 1.
