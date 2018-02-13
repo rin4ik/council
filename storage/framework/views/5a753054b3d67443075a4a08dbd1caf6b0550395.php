@@ -1,4 +1,4 @@
-<?php $__empty_1 = true; $__currentLoopData = $threads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+<?php $__empty_1 = true; $__currentLoopData = $threads; $__env->addLoop($__currentLoopData); foreach ($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 <div class="panel panel-default shadow">
 	<div class="panel-heading" style="padding: 0px;
 padding-left: 10px; padding-right:10px;">
@@ -6,7 +6,7 @@ padding-left: 10px; padding-right:10px;">
 			<h4 class="flex" style="margin: 6px; padding:4px; padding-left:0">
 				<a href="<?php echo e($thread->path()); ?>">
 			
-					<?php if(auth()->check() && $thread->hasUpdatesFor(auth()->user())): ?>
+					<?php if (auth()->check() && $thread->hasUpdatesFor(auth()->user())): ?>
 					<p style="font-size:16px; margin: 5px;  color:rgb(16, 16, 16)"><?php echo e($thread->title); ?></p>
 					<?php else: ?>
 					<p style="font-size:16px;margin: 5px; color:rgb(80, 90, 96)"><?php echo e($thread->title); ?></p>
@@ -18,7 +18,7 @@ padding-left: 10px; padding-right:10px;">
                 font-size: 15px;color:rgb(50, 50, 50)">
 				<span><?php echo e($thread->replies_count); ?> <?php echo e(str_plural('reply', $thread->replies_count)); ?></span>
 			</a>
-			<?php if($thread->pinned): ?>
+			<?php if ($thread->pinned): ?>
 			<span class="glyphicon glyphicon-pushpin pin" aria-hidden="true"></span>
 											   <?php endif; ?>
 		</div>
