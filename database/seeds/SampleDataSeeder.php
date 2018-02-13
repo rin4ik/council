@@ -1,4 +1,5 @@
 <?php
+
 use App\Reply;
 use App\Thread;
 use App\Channel;
@@ -29,6 +30,7 @@ class SampleDataSeeder extends Seeder
     {
         Channel::truncate();
         factory(Channel::class, 1)->create();
+
         return $this;
     }
 
