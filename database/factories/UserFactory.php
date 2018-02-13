@@ -18,6 +18,7 @@ $factory->define(App\User::class, function (Faker $faker) {
 
     return [
         'name' => $faker->name,
+        'username' => $faker->unique()->word,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
@@ -55,7 +56,7 @@ $factory->define(App\Thread::class, function ($faker) {
             return factory('App\Channel')->create()->id;
         },
         'title' => $title,
-        'body'  => $faker->paragraph,
+        'body' => $faker->paragraph,
         'visits' => 0,
         'slug' => str_slug($title),
         'locked' => false
