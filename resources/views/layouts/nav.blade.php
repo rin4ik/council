@@ -60,7 +60,7 @@
 						<li>
 							<a href="/threads/{{ $channel->slug }}">{{ $channel->name }}</a>
 						</li>
-					 @empty
+						 @empty
 						<li style="padding-left:7px">No relevant results!</li>
 						@endforelse
 
