@@ -13,7 +13,7 @@
 	<!-- Styles -->
 	<link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
 	<link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
-
+	<link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet">
 
 	<script>
 		window.App=<?php echo json_encode(['csrfToken'=>csrf_token(),
@@ -28,7 +28,7 @@
 <body>
 	
 	<div id="app">
-		<?php echo $__env->make('layouts.nav', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?> <?php echo $__env->yieldContent('content'); ?>
+		<?php echo $__env->make('layouts.nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> <?php echo $__env->yieldContent('content'); ?>
 		<flash message="<?php echo e(session('flash')); ?>"></flash>
 
 	</div>
@@ -38,6 +38,6 @@
 
 	<script src="<?php echo e(asset('js/app.js')); ?>"></script>
 </body>
-<?php echo $__env->make('layouts.footer', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 </html>

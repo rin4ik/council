@@ -13,7 +13,7 @@
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
-
+	<link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet">
 
 	<script>
 		window.App={!!json_encode(['csrfToken'=>csrf_token(),
