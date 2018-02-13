@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8" v-cloak>
-				<?php echo $__env->make('threads._question', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				<?php echo $__env->make('threads._question', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 				<replies @added="repliesCount++" @removed="repliesCount--"></replies>
 			</div>
@@ -38,4 +38,4 @@
 	</div>
 </thread-view>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
