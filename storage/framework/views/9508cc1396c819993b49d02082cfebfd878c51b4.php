@@ -57,18 +57,16 @@
 					</a>
 
 					<ul class="dropdown-menu channel">
-						<?php $__empty_1 = true; $__currentLoopData = $channels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $channel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?> <?php if(count($channel)): ?>
-
+						<?php $__empty_1 = true; $__currentLoopData = $channels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $channel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 						<li>
 							<a href="/threads/<?php echo e($channel->slug); ?>"><?php echo e($channel->name); ?></a>
 						</li>
-						<?php endif; ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+					 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 						<li style="padding-left:7px">No relevant results!</li>
 						<?php endif; ?>
 
 					</ul>
 				</li>
-				<channel-dropdown :channels="<?php echo e($channels); ?>"></channel-dropdown>
 			</ul>
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">

@@ -36,9 +36,11 @@ class ThreadsController extends Controller
             return $threads;
         }
 
-        return view('threads.index',
-        ['threads'=>$threads,
-        'trending'=>$trending->get()]);
+        return view(
+            'threads.index',
+        ['threads' => $threads,
+        'trending' => $trending->get()]
+        );
     }
 
     /**
@@ -82,7 +84,6 @@ class ThreadsController extends Controller
             'channel_id' => request('channel_id'),
             'title' => request('title'),
             'body' => request('body')
-
         ]);
         if (request()->wantsJson()) {
             return response($thread, 201);
@@ -135,7 +136,9 @@ class ThreadsController extends Controller
      */
     protected function getThreads(Channel $channel, ThreadFilters $filters)
     {
-        $threads = Thread::filter($filters)->latest();
+        $threads = Thread::orderBy('pinned', 'DESC')
+                  ->latest()
+                 ->filter($filters);
         if ($channel->exists) {
             $threads->where('channel_id', $channel->id);
         }

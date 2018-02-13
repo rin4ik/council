@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8" v-cloak>
-				<?php echo $__env->make('threads._question', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+				<?php echo $__env->make('threads._question', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 				<replies @added="repliesCount++" @removed="repliesCount--"></replies>
 			</div>
@@ -23,8 +23,12 @@
 
 						<p>
 							<subscribe-button v-if="signedIn" :active="<?php echo e(json_encode($thread->isSubscribedTo)); ?>"></subscribe-button>
-							<button v-if="authorize('isAdmin')" class="btn shadow btn-danger " @click="toggleLock" v-text="locked? 'UNLOCK'   : 'LOCK'">
+							<button v-if="authorize('isAdmin')" class="btn btn-danger" @click="toggleLock" v-text="locked? 'UNLOCK'   : 'LOCK'">
 							</button>
+							<button class="btn btn-default"
+							                                        v-if="authorize('isAdmin')"
+							                                        @click="togglePin"
+							                                       v-text="pinned ? 'UNPIN' : 'PIN'"></button>
 
 						</p>
 					</div>
@@ -34,4 +38,4 @@
 	</div>
 </thread-view>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -5,6 +5,7 @@ padding-left: 10px; padding-right:10px;">
 		<div class="level">
 			<h4 class="flex" style="margin: 6px; padding:4px; padding-left:0">
 				<a href="{{ $thread->path() }}">
+			
 					@if(auth()->check() && $thread->hasUpdatesFor(auth()->user()))
 					<p style="font-size:16px; margin: 5px;  color:rgb(16, 16, 16)">{{$thread->title}}</p>
 					@else
@@ -17,6 +18,9 @@ padding-left: 10px; padding-right:10px;">
                 font-size: 15px;color:rgb(50, 50, 50)">
 				<span>{{ $thread->replies_count }} {{ str_plural('reply', $thread->replies_count) }}</span>
 			</a>
+			@if ($thread->pinned)
+			<span class="glyphicon glyphicon-pushpin pin" aria-hidden="true"></span>
+											   @endif
 		</div>
 
 	</div>

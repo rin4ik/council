@@ -12,7 +12,7 @@ class Thread extends Model
     protected $guarded = [];
     protected $with = ['creator', 'channel'];
     protected $appends = ['isSubscribedTo'];
-    protected $casts = ['locked'=>'boolean'];
+    protected $casts = ['locked' => 'boolean', 'pinned' => 'boolean'];
 
     protected static function boot()
     {
@@ -23,7 +23,7 @@ class Thread extends Model
             Reputation::reduce($thread->creator, Reputation::THREAD_WAS_PUBLISHED);
         });
         static::created(function ($thread) {
-            $thread->update(['slug'=>$thread->title]);
+            $thread->update(['slug' => $thread->title]);
             Reputation::award($thread->creator, Reputation::THREAD_WAS_PUBLISHED);
         });
     }
@@ -43,7 +43,7 @@ class Thread extends Model
         $slug = str_slug($value);
 
         if (static::whereSlug($slug)->exists()) {
-            $slug = "{$slug}-".$this->id;
+            $slug = "{$slug}-" . $this->id;
         }
 
         $this->attributes['slug'] = $slug;

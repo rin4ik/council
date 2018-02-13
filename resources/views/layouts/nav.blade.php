@@ -56,18 +56,16 @@
 					</a>
 
 					<ul class="dropdown-menu channel">
-						@forelse ($channels as $channel) @if(count($channel))
-
+						@forelse ($channels as $channel)
 						<li>
 							<a href="/threads/{{ $channel->slug }}">{{ $channel->name }}</a>
 						</li>
-						@endif @empty
+					 @empty
 						<li style="padding-left:7px">No relevant results!</li>
 						@endforelse
 
 					</ul>
 				</li>
-				<channel-dropdown :channels="{{ $channels }}"></channel-dropdown>
 			</ul>
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">

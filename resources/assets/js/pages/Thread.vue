@@ -9,6 +9,7 @@ export default {
       repliesCount: this.thread.replies_count,
       locked: this.thread.locked,
       editing: false,
+      pinned: this.thread.pinned,
       form: { title: this.thread.title, body: this.thread.body }
     };
   },
@@ -21,6 +22,11 @@ export default {
     },
     toggleEdit() {
       this.editing = !this.editing;
+    },
+    togglePin() {
+      const uri = `/pinned-threads/${this.thread.slug}`;
+      axios[this.pinned ? "delete" : "post"](uri);
+      this.pinned = !this.pinned;
     },
     cancel() {
       this.form.title = this.thread.title;
