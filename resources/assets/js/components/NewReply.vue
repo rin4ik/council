@@ -1,22 +1,26 @@
 <template>
+<div class="reply shadow">
 <div>
-    <div v-if="signedIn">
-     <!-- @auth -->
-            <!-- <form method="POST" action="{{$thread->path().'/replies'}}"> -->
-                <!-- {{csrf_field()}} -->
-                <div class="form-group">
-                   <wysiwyg name="body" v-model="body" placeholder="Jot something down" :shouldClear="completed"></wysiwyg>
+    <div v-if="!signedIn">
+   <p class="text-center">   Please
+                <a href="/login">sign in</a> to participate in this discussion
+      </p> 
+               
+                
+    </div>
+
+           <div class="text-center" v-else-if="!confirmed">
+            To participate in this thread, please check your email and confirm your account.
+        </div>
+             <div  v-else>
+ <div class="form-group">
+                   <wysiwyg name="body" v-model="body" placeholder="Have something to say?" :shouldClear="completed"></wysiwyg>
                    
                </div>
-                <button type="submit" @click="addReply" class="btn shadow btn-primary ">POST</button>
-            <!-- </form> -->
-</div>
-
-          
-             <p class="text-center" v-else>Please
-                <a href="/login">sign in</a> to participate in this discussion</p>
+               <button type="submit" @click="addReply" class="btn shadow btn-default ">POST</button>
+             </div>
          
-
+</div>
 </div>
 </template>
 
@@ -31,7 +35,24 @@ export default {
       completed: false
     };
   },
-
+  computed: {
+    confirmed() {
+      return window.App.user.confirmed;
+    }
+  },
+  mounted() {
+    $("#body").atwho({
+      at: "@",
+      delay: 2000,
+      callbacks: {
+        remoteFilter: function(query, callback) {
+          $.getJSON("/api/users", { name: query }, function(usernames) {
+            callback(usernames);
+          });
+        }
+      }
+    });
+  },
   methods: {
     addReply() {
       axios
@@ -49,6 +70,11 @@ export default {
   }
 };
 </script>
-<style>
-
+<style scoped>
+.reply {
+  background-color: white;
+  padding: 15px;
+  border: 1px solid #e3e0e0;
+  border-radius: 5px;
+}
 </style>
