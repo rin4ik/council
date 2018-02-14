@@ -40,8 +40,9 @@ $factory->state(App\User::class, 'unconfirmed', function () {
 
        return [
         'name' => $name,
-        'slug' => $name,
-        'description' => $faker->sentence
+        'slug' => $faker->unique()->word,
+        'description' => $faker->sentence,
+        'archived' => false
     ];
    });
 
