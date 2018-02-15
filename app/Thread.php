@@ -30,7 +30,8 @@ class Thread extends Model
 
     public function path()
     {
-        return "/threads/{$this->channel->slug}/{$this->slug}";
+        $channel = $this->channel->slug;
+        return "/threads/{$channel}/{$this->slug}";
     }
 
     public function getRouteKeyName()
@@ -43,7 +44,7 @@ class Thread extends Model
         $slug = str_slug($value);
 
         if (static::whereSlug($slug)->exists()) {
-            $slug = "{$slug}-".$this->id;
+            $slug = "{$slug}-" . $this->id;
         }
 
         $this->attributes['slug'] = $slug;
@@ -56,7 +57,7 @@ class Thread extends Model
 
     public function channel()
     {
-        return $this->belongsTo(Channel::class);
+        return $this->belongsTo(Channel::class)->withoutGlobalScope('active');
     }
 
     public function creator()

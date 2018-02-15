@@ -23,6 +23,11 @@ class Channel extends Model
         return 'slug';
     }
 
+    public static function withArchived()
+    {
+        return Channel::withoutGlobalScopes();
+    }
+
     public function threads()
     {
         return $this->hasMany(Thread::class);

@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use App\Channel;
 use App\User;
-use Symfony\Component\HttpFoundation\Response;
+use App\Channel;
 use Tests\TestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 class ChannelAdministrationTest extends TestCase
 {
@@ -41,6 +41,23 @@ class ChannelAdministrationTest extends TestCase
         $this->get(route('admin.channels.index'))
             ->assertSee($updatedChannel['name'])
             ->assertSee($updatedChannel['description']);
+    }
+
+    /** @test */
+    public function archive_channel_should_not_influence_existing_thread()
+    {
+        $this->signInAdmin();
+        $channel = create('App\Channel');
+
+        $thread = create('App\Thread', ['channel_id' => $channel->id]);
+
+        $path = $thread->path();
+
+        $channel->update([
+            'archived' => true
+        ]);
+
+        $this->assertEquals($path, $thread->fresh()->path());
     }
 
     /** @test */
