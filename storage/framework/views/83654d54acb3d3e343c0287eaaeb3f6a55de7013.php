@@ -13,8 +13,8 @@
             </tr>
             </thead>
             <tbody>
-            <?php $__empty_1 = true; $__currentLoopData = $channels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $channel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                <tr class="<?php echo e($channel->archived?'info':''); ?>">
+            <?php $__empty_1 = true; $__currentLoopData = $channels; $__env->addLoop($__currentLoopData); foreach ($__currentLoopData as $channel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                <tr class="<?php echo e($channel->archived ? 'info' : ''); ?>">
                     <td><?php echo e($channel->name); ?></td>
                     <td><?php echo e($channel->slug); ?></td>
                     <td><?php echo e($channel->description); ?></td>
@@ -31,4 +31,4 @@
             </tbody>
         </table>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('admin.layout.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('admin.layout.app', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>

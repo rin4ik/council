@@ -33,7 +33,7 @@
 						<li>
 							<a href="/threads">All Threads</a>
 						</li>
-						<?php if(auth()->guard()->check()): ?>
+						<?php if (auth()->guard()->check()): ?>
 						<li>
 							<a href="/threads?by=<?php echo e(auth()->user()->name); ?>">My Threads</a>
 						</li>
@@ -54,7 +54,7 @@
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Authentication Links -->
-				<?php if(auth()->guard()->guest()): ?>
+				<?php if (auth()->guard()->guest()): ?>
 				<li>
 					<a class="caps" href="<?php echo e(route('login')); ?>" style="color: white;">Login</a>
 				</li>
@@ -63,7 +63,7 @@
 				</li>
 				<?php else: ?> 
 				<user-notifications></user-notifications>
-				<?php if(Auth::user()->isAdmin()): ?>
+				<?php if (Auth::user()->isAdmin()): ?>
 		               <li><a style="color: white;" href="/admin"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
 				                  <?php endif; ?>
 				<li class="dropdown">
