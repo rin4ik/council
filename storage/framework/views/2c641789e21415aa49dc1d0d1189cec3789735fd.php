@@ -8,7 +8,7 @@
 				<div class="panel-heading">Create a New Thread</div>
 
 				<div class="panel-body">
-					<?php if(auth()->guard()->check()): ?>
+					<?php if (auth()->guard()->check()): ?>
 
 					<form method="POST" action="/threads">
 						<?php echo e(csrf_field()); ?>
@@ -18,8 +18,8 @@
 							<label for="channel_id"> Choose a channel:</label>
 							<select name="channel_id" id="channel_id" class="form-control" required>
 								<option value="">choose one...</option>
-								<?php $__currentLoopData = $channels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $channel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-								<option value="<?php echo e($channel->id); ?>" <?php echo e(old( 'channel_id')==$channel->id ? 'selected' : ''); ?>><?php echo e($channel->name); ?></option>
+								<?php $__currentLoopData = $channels; $__env->addLoop($__currentLoopData); foreach ($__currentLoopData as $channel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+								<option value="<?php echo e($channel->id); ?>" <?php echo e(old('channel_id') == $channel->id ? 'selected' : ''); ?>><?php echo e($channel->name); ?></option>
 								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 							</select>
 							<div class="form-group <?php echo e($errors->has('channel_id') ? ' has-error' : ''); ?>">
@@ -51,7 +51,7 @@
 						</div>
 					</form>
 
-					<?php endif; ?> <?php if(auth()->guard()->guest()): ?>
+					<?php endif; ?> <?php if (auth()->guard()->guest()): ?>
 					<p class="text-center">Please
 						<a href="<?php echo e(route('login')); ?>">sign in</a> to create a new thread</p>
 					<?php endif; ?>
@@ -62,4 +62,4 @@
 
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
