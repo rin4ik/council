@@ -16,6 +16,7 @@ class ChannelsController extends Controller
     public function index()
     {
         $channels = Channel::withArchived()->with('threads')->get();
+
         return view('admin.channels.index', compact('channels'));
     }
 
@@ -57,6 +58,7 @@ class ChannelsController extends Controller
         if (request()->wantsJson()) {
             return response($channel, 200);
         }
+
         return redirect(route('admin.channels.index'))
             ->with('flash', 'Your channel has been updated!');
     }
@@ -78,6 +80,7 @@ class ChannelsController extends Controller
         if (request()->wantsJson()) {
             return response($channel, 201);
         }
+
         return redirect(route('admin.channels.index'))
             ->with('flash', 'Your channel has been created!');
     }
