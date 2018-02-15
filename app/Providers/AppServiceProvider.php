@@ -14,8 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \View::composer('*', function ($view) {
-            $view->with('channels', Channel::all());
+        \View::composer('layouts.nav', function ($view) {
+            $view->with('channels', Channel::orderBy('name', 'asc')->get());
         });
         \Validator::extend('spamfree', 'App\Rules\SpamFree@passes');
         $this->app->singleton(Illuminate\Support\EngineManager::class, function ($app) {

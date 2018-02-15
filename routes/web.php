@@ -49,6 +49,7 @@ Route::get('/profiles/{user}/notifications', 'UserNotificationsController@index'
 Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index')->name('register.confirm');
 Route::get('api/users', 'Api\UsersController@index');
 Route::post('api/users/{user}/avatar', 'Api\UserAvatarController@store')->name('avatar');
+Route::get('api/channels', 'Api\ChannelsController@index');
 Route::group([
     'prefix' => 'admin',
     'middleware' => 'admin',
@@ -59,3 +60,5 @@ Route::group([
     Route::get('/channels', 'ChannelsController@index')->name('admin.channels.index');
     Route::get('/channels/create', 'ChannelsController@create')->name('admin.channels.create');
 });
+Route::get('/channels/{channel}/edit', 'Admin\ChannelsController@edit')->name('admin.channels.edit');
+   Route::patch('/channels/{channel}', 'Admin\ChannelsController@update')->name('admin.channels.update');

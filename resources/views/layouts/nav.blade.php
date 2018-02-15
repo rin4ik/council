@@ -48,7 +48,7 @@
 				<li>
 					<a class="caps" href="/threads/create" style="color: white;">New Thread</a>
 				</li>
-				<channel-dropdown :channels="{{ $channels }}"></channel-dropdown>
+				<channel-dropdown :channels="{{$channels}}"></channel-dropdown>
 			</ul>
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">

@@ -50,7 +50,7 @@ class ThreadsController extends Controller
      */
     public function create()
     {
-        return view('threads.create');
+        return view('threads.create', ['channels' => Channel::all()]);
     }
 
     public function update($channel, Thread $thread)
