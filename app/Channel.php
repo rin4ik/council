@@ -25,7 +25,7 @@ class Channel extends Model
 
     public static function withArchived()
     {
-        return Channel::withoutGlobalScopes();
+        return self::withoutGlobalScopes();
     }
 
     public function threads()
