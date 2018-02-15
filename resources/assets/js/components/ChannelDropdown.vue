@@ -44,6 +44,9 @@ export default {
       filter: ""
     };
   },
+  created() {
+    axios.get("/api/channels").then(({ data }) => (this.channel = data));
+  },
   computed: {
     filteredThreads() {
       return this.channels.filter(channel => {

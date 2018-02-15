@@ -48,24 +48,7 @@
 				<li>
 					<a class="caps" href="/threads/create" style="color: white;">New Thread</a>
 				</li>
-				<li class="dropdown ">
-					<a href="#" class="dropdown-toggle caps" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true "
-					 style="color: white;">
-						Channels
-						<span class="caret"></span>
-					</a>
-
-					<ul class="dropdown-menu channel">
-						@forelse ($channels as $channel)
-						<li>
-							<a href="/threads/{{ $channel->slug }}">{{ $channel->name }}</a>
-						</li>
-						 @empty
-						<li style="padding-left:7px">No relevant results!</li>
-						@endforelse
-
-					</ul>
-				</li>
+				<channel-dropdown :channels="{{ $channels }}"></channel-dropdown>
 			</ul>
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">
