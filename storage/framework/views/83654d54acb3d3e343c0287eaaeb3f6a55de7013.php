@@ -14,7 +14,7 @@
             </thead>
             <tbody>
             <?php $__empty_1 = true; $__currentLoopData = $channels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $channel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                <tr class="<?php echo e($channel->archived?'info':''); ?>">
+                <tr class="<?php echo e($channel->archived?'danger':''); ?>">
                     <td><?php echo e($channel->name); ?></td>
                     <td><?php echo e($channel->slug); ?></td>
                     <td><?php echo e($channel->description); ?></td>
