@@ -25,7 +25,7 @@ class Channel extends Model
 
     public static function withArchived()
     {
-        return self::withoutGlobalScopes();
+        return (new static)->newQueryWithoutScope('active');
     }
 
     public function threads()
