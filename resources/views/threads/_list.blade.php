@@ -34,8 +34,13 @@ padding-left: 10px; padding-right:10px;">
 			{{$thread->created_at->diffForHumans()}}
 		</div>
 	</div>
-	<div class="panel-footer" style="background-color:white">
-		{{$thread->visits}} {{ str_plural('Visit', $thread->visits) }}
+	<div class="panel-footer">
+		<div class="level">
+			<div class="flex">
+				{{ $thread->visits }} Visits            
+			</div>
+			<a href="/threads/{{ $thread->channel->slug }}"><span class="label label-primary">{{ $thread->channel->name}}</span></a>            
+		</div>
 	</div>
 </div>
 @empty
