@@ -1,43 +1,59 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-
+<html lang="{{ config('app.locale') }}">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="/img/img10.png">
-	<!-- CSRF Token -->
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>Forum</title>
-	<!-- Styles -->
-	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<script>
-		window.App={!!json_encode(['csrfToken'=>csrf_token(),
-      'user'=>Auth::user(),
-      'signedIn'=>Auth::check()
-      ])!!};
-	</script>
-	@yield('header')
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script>
+        window.App = {!! json_encode([
+            'csrfToken' => csrf_token(),
+            'user' => Auth::user(),
+            'signedIn' => Auth::check()
+        ]) !!};
+    </script>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    @yield('head')
 </head>
 
-<body>
-	
-	<div id="app">
-		@include('layouts.nav') @yield('content')
-		<flash message="{{session('flash')}}"></flash>
+<body class="font-sans bg-grey-lighter">
+    <div id="app">
+        @include ('layouts.nav')
 
-	</div>
+        <div class="container mx-auto">
+            <div class="flex">
+                @section('sidebar')
+                    @include('sidebar')
+                @show
 
-	<!-- Scripts -->
+                <div class="px-10 bg-white flex-1">
+                    @yield('content')
+                </div>
 
+                 @include('channels-sidebar')
+            </div>
+        </div>
 
-	<script src="{{ asset('js/app.js') }}"></script>
+        <flash  class="animated fadeInRight" message="{{ session('flash') }}"></flash>
+
+        @include('modals.all')
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </body>
-@include('layouts.footer')
-
 </html>

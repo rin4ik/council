@@ -1,49 +1,61 @@
-<?php $__empty_1 = true; $__currentLoopData = $threads; $__env->addLoop($__currentLoopData); foreach ($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-<div class="panel panel-default shadow">
-	<div class="panel-heading" style="padding: 0px;
-padding-left: 10px; padding-right:10px;">
-		<div class="level">
-			<h4 class="flex" style="margin: 6px; padding:4px; padding-left:0">
-				<a href="<?php echo e($thread->path()); ?>">
-			
-					<?php if (auth()->check() && $thread->hasUpdatesFor(auth()->user())): ?>
-					<p style="font-size:16px; margin: 5px;  color:rgb(16, 16, 16)"><?php echo e($thread->title); ?></p>
-					<?php else: ?>
-					<p style="font-size:16px;margin: 5px; color:rgb(80, 90, 96)"><?php echo e($thread->title); ?></p>
-					<?php endif; ?>
-				</a>
+<?php $__empty_1 = true; $__currentLoopData = $threads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+    <div class="flex <?php echo e($loop->last ? '' : 'mb-6 pb-4'); ?>">
+        <div class="mr-4">
+            <img src="<?php echo e($thread->creator->avatar_path); ?>"
+                     alt="<?php echo e($thread->creator->username); ?>"
+                     class="w-8 h-8 bg-blue-darker rounded-full p-2">
+        </div>
 
-			</h4>
-			<a href="<?php echo e($thread->path()); ?>" style="
-                font-size: 15px;color:rgb(50, 50, 50)">
-				<span><?php echo e($thread->replies_count); ?> <?php echo e(str_plural('reply', $thread->replies_count)); ?></span>
-			</a>
-			<?php if ($thread->pinned): ?>
-			<span class="glyphicon glyphicon-pushpin pin" aria-hidden="true"></span>
-											   <?php endif; ?>
-		</div>
+        <div class="flex-1 <?php echo e($loop->last ? '' : 'border-b border-blue-lightest'); ?>">
+            <h3 class="text-xl font-normal mb-2 tracking-tight">
+                <a href="<?php echo e($thread->path()); ?>" class="text-blue">
+                    <?php if($thread->pinned): ?>
+                        Pinned:
+                    <?php endif; ?>
 
-	</div>
+                    <?php if(auth()->check() && $thread->hasUpdatesFor(auth()->user())): ?>
+                        <strong>
+                            <?php echo e($thread->title); ?>
 
-	<div class="panel-body">
-		<div class="body" style="margin: 5px;padding-left:2px"><?php echo $thread->body; ?></div>
-		<div class="level" style="padding: 0;margin: 5px; background-color: white; float:right; padding-top:10px">
-			posted by
-			<a href="/profiles/<?php echo e($thread->creator->name); ?>" style="margin-left:3px;margin-right:3px ">
-				<?php echo e($thread->creator->name); ?></a>
-			<?php echo e($thread->created_at->diffForHumans()); ?>
+                        </strong>
+                    <?php else: ?>
+                        <?php echo e($thread->title); ?>
 
-		</div>
-	</div>
-	<div class="panel-footer">
-		<div class="level">
-			<div class="flex">
-				<?php echo e($thread->visits); ?> Visits            
-			</div>
-			<a href="/threads/<?php echo e($thread->channel->slug); ?>"><span class="label label-primary"><?php echo e($thread->channel->name); ?></span></a>            
-		</div>
-	</div>
-</div>
+                    <?php endif; ?>
+                </a>
+            </h3>
+
+            <p class="text-2xs text-grey-darkest mb-4">
+                Posted By: <a href="<?php echo e(route('profile', $thread->creator)); ?>" class="text-blue"><?php echo e($thread->creator->username); ?></a>
+            </p>
+
+            <thread-view :thread="<?php echo e($thread); ?>" inline-template class="mb-6 text-grey-darkest leading-loose pr-8">
+                <highlight :content="body"></highlight>
+            </thread-view>
+
+            <div class="flex items-center text-xs mb-6">
+                <a class="btn bg-grey-light text-grey-darkest py-2 px-3 mr-4 text-2xs flex items-center" href="/threads/<?php echo e($thread->channel->slug); ?>">
+                    <span class="rounded-full h-2 w-2 mr-2" style="background: <?php echo e($thread->channel->color); ?>"></span>
+
+                    <?php echo e(ucwords($thread->channel->name)); ?>
+
+                </a>
+
+                <span class="mr-2 flex items-center text-grey-darker text-2xs font-semibold mr-4">
+                    <?php echo $__env->make('svgs.icons.eye', ['class' => 'mr-2'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                    <?php echo e($thread->visits); ?> visits
+                </span>
+
+                <a href="<?php echo e($thread->path()); ?>" class="mr-2 flex items-center text-grey-darker text-2xs font-semibold">
+                    <?php echo $__env->make('svgs.icons.book', ['class' => 'mr-2'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                    <?php echo e($thread->replies_count); ?> <?php echo e(str_plural('reply', $thread->replies_count)); ?>
+
+                </a>
+
+                <a class="btn ml-auto is-outlined text-grey-darker py-2 text-xs" href="<?php echo e($thread->path()); ?>">read more</a>
+            </div>
+        </div>
+    </div>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-<p>There no relevant results at this time</p>
-<?php endif; ?> <?php echo e($threads->render()); ?>
+    <p>There are no relevant results at this time.</p>
+<?php endif; ?>

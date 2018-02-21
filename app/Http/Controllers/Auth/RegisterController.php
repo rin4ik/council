@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\PleaseConfirmYourEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/threads';
 
     /**
      * Create a new controller instance.
@@ -44,28 +45,28 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'name' => 'max:255',
+            'username' => 'required|max:255|unique:users|alpha_dash',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @param  array $data
+     * @return User
      */
     protected function create(array $data)
     {
-        return User::create([
+        return User::forceCreate([
             'name' => $data['name'],
             'username' => $data['username'],
             'email' => $data['email'],
@@ -77,14 +78,12 @@ class RegisterController extends Controller
     /**
      * The user has been registered.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
-     * @return mixed
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\User                $user
+     * @return void
      */
     protected function registered(Request $request, $user)
     {
-        Mail::to($user)->send(new \App\Mail\PleaseConfirmYourEmail($user));
-
-        return redirect($this->redirectPath());
+        Mail::to($user)->send(new PleaseConfirmYourEmail($user));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Administrator;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -18,9 +19,9 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \App\Http\Middleware\TrustProxies::class,
-        \App\Http\Middleware\TrimStrings::class,
+        \App\Http\Middleware\LoadCommonData::class
     ];
+
     /**
      * The application's route middleware groups.
      *
@@ -58,6 +59,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'must-be-confirmed' => \App\Http\Middleware\RedirectIfEmailNotConfirmed::class,
-        'admin' => \App\Http\Middleware\Administrator::class,
+        'admin' => Administrator::class
     ];
 }

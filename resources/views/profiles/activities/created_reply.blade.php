@@ -1,9 +1,10 @@
- @component('profiles.activities.activity') @slot('heading')
-<i class="glyphicon glyphicon-share-alt" aria-hidden="true" style="margin-right:2px;"> </i>
+@component('profiles.activities.activity')
+    @slot('heading')
+        {{ $profileUser->usernname }} replied to
+        <a href="{{ $activity->subject->thread->path() }}">"{{ $activity->subject->thread->title }}"</a>
+    @endslot
 
-
-{{$profileUser->name}} replied to
-<a href="{{$activ->subject->thread->path()}}">{{$activ->subject->thread->title}}</a>
-
-@endslot @slot('date') {{$activ->subject->created_at->diffForHumans()}} @endslot @slot('body') {!! $activ->subject->body
-!!} @endslot @endcomponent
+    @slot('body')
+        {!! $activity->subject->body !!}
+    @endslot
+@endcomponent

@@ -1,48 +1,57 @@
-@forelse($threads as $thread)
-<div class="panel panel-default shadow">
-	<div class="panel-heading" style="padding: 0px;
-padding-left: 10px; padding-right:10px;">
-		<div class="level">
-			<h4 class="flex" style="margin: 6px; padding:4px; padding-left:0">
-				<a href="{{ $thread->path() }}">
-			
-					@if(auth()->check() && $thread->hasUpdatesFor(auth()->user()))
-					<p style="font-size:16px; margin: 5px;  color:rgb(16, 16, 16)">{{$thread->title}}</p>
-					@else
-					<p style="font-size:16px;margin: 5px; color:rgb(80, 90, 96)">{{$thread->title}}</p>
-					@endif
-				</a>
+@forelse ($threads as $thread)
+    <div class="flex {{ $loop->last ? '' : 'mb-6 pb-4' }}">
+        <div class="mr-4">
+            <img src="{{ $thread->creator->avatar_path }}"
+                     alt="{{ $thread->creator->username }}"
+                     class="w-8 h-8 bg-blue-darker rounded-full p-2">
+        </div>
 
-			</h4>
-			<a href="{{ $thread->path() }}" style="
-                font-size: 15px;color:rgb(50, 50, 50)">
-				<span>{{ $thread->replies_count }} {{ str_plural('reply', $thread->replies_count) }}</span>
-			</a>
-			@if ($thread->pinned)
-			<span class="glyphicon glyphicon-pushpin pin" aria-hidden="true"></span>
-											   @endif
-		</div>
+        <div class="flex-1 {{ $loop->last ? '' : 'border-b border-blue-lightest' }}">
+            <h3 class="text-xl font-normal mb-2 tracking-tight">
+                <a href="{{ $thread->path() }}" class="text-blue">
+                    @if ($thread->pinned)
+                        Pinned:
+                    @endif
 
-	</div>
+                    @if (auth()->check() && $thread->hasUpdatesFor(auth()->user()))
+                        <strong>
+                            {{ $thread->title }}
+                        </strong>
+                    @else
+                        {{ $thread->title }}
+                    @endif
+                </a>
+            </h3>
 
-	<div class="panel-body">
-		<div class="body" style="margin: 5px;padding-left:2px">{!! $thread->body !!}</div>
-		<div class="level" style="padding: 0;margin: 5px; background-color: white; float:right; padding-top:10px">
-			posted by
-			<a href="/profiles/{{$thread->creator->name}}" style="margin-left:3px;margin-right:3px ">
-				{{ $thread->creator->name}}</a>
-			{{$thread->created_at->diffForHumans()}}
-		</div>
-	</div>
-	<div class="panel-footer">
-		<div class="level">
-			<div class="flex">
-				{{ $thread->visits }} Visits            
-			</div>
-			<a href="/threads/{{ $thread->channel->slug }}"><span class="label label-primary">{{ $thread->channel->name}}</span></a>            
-		</div>
-	</div>
-</div>
+            <p class="text-2xs text-grey-darkest mb-4">
+                Posted By: <a href="{{ route('profile', $thread->creator) }}" class="text-blue">{{ $thread->creator->username }}</a>
+            </p>
+
+            <thread-view :thread="{{ $thread }}" inline-template class="mb-6 text-grey-darkest leading-loose pr-8">
+                <highlight :content="body"></highlight>
+            </thread-view>
+
+            <div class="flex items-center text-xs mb-6">
+                <a class="btn bg-grey-light text-grey-darkest py-2 px-3 mr-4 text-2xs flex items-center" href="/threads/{{ $thread->channel->slug }}">
+                    <span class="rounded-full h-2 w-2 mr-2" style="background: {{ $thread->channel->color }}"></span>
+
+                    {{ ucwords($thread->channel->name) }}
+                </a>
+
+                <span class="mr-2 flex items-center text-grey-darker text-2xs font-semibold mr-4">
+                    @include ('svgs.icons.eye', ['class' => 'mr-2'])
+                    {{ $thread->visits }} visits
+                </span>
+
+                <a href="{{ $thread->path() }}" class="mr-2 flex items-center text-grey-darker text-2xs font-semibold">
+                    @include ('svgs.icons.book', ['class' => 'mr-2'])
+                    {{ $thread->replies_count }} {{ str_plural('reply', $thread->replies_count) }}
+                </a>
+
+                <a class="btn ml-auto is-outlined text-grey-darker py-2 text-xs" href="{{ $thread->path() }}">read more</a>
+            </div>
+        </div>
+    </div>
 @empty
-<p>There no relevant results at this time</p>
-@endforelse {{$threads->render()}}
+    <p>There are no relevant results at this time.</p>
+@endforelse

@@ -1,18 +1,13 @@
 <div class="panel panel-default">
-	<div class="panel-heading alert-success">
+    <div class="panel-heading">
+        <div class="level">
+            <span class="flex">
+                {{ $heading }}
+            </span>
+        </div>
+    </div>
 
-		<div class="level">
-			<span class="flex">
-				{{$heading}}
-			</span>
-			<span>
-				{{$date}}
-			</span>
-		</div>
-	</div>
-
-	<div class="panel-body">
-		{{ $body }}
-
-	</div>
+    <div class="panel-body">
+        {{ $body }}
+    </div>
 </div>
