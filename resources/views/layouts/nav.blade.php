@@ -16,7 +16,7 @@
                            placeholder="Search for something..."
                            name="q"
                            ref="search"
-                           class="search-input absolute pin-r pin-t h-full rounded bg-blue-darkest border-none pl-6 pr-10 text-white">
+                           class="search-input absolute pin-r pin-t h-full rounded bg-red-light border-none pl-6 pr-10 text-white">
                            <button type="submit">s</button>
                 </form>
 
@@ -29,16 +29,16 @@
                 {{-- User dropdown. --}}
                 <div>
                     <dropdown>
-                        <div slot="heading"
+                        <div  slot="heading"
                              class="rounded-full bg-blue-darkest w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
                         >
                             <img src="{{ auth()->user()->avatar_path }}"
                                  alt="{{ auth()->user()->username }}"
-                                 class="relative z-10 w-4 rounded-full">
+                                 class="relative z-10 w-8  rounded-full">
                         </div>
 
-                        <template slot="links">
-                            <li class="text-sm pb-3">
+                        <template class="bg-red-light" slot="links">
+                            <li class="text-sm  pb-3">
                                 <a class="link" href="{{ route('profile', Auth::user()) }}">My Profile</a>
                             </li>
 

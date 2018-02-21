@@ -3,7 +3,7 @@
 
     <div class="widget border-b-0">
         @if (auth()->check())
-            <button class="btn is-green w-full" @click="$modal.show('new-thread')">Add New Thread</button>
+            <button class="btn bg-red-light hover:bg-red-dark" @click="$modal.show('new-thread')">Add New Thread</button>
         @else
             <button class="btn is-green w-full tracking-wide" @click="$modal.show('login')">Log In To Post</button>
         @endif
@@ -14,8 +14,8 @@
 
         <ul class="list-reset text-sm">
             <li class="pb-3">
-                <a href="/threads" class="flex items-center text-grey-darkest hover:text-blue hover:font-bold {{ Request::is('threads') && ! Request::query() ? 'text-blue font-bold' : '' }}">
-                    @include ('svgs.icons.all-threads', ['class' => 'mr-3 text-grey'])
+                <a href="/threads" class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold {{ Request::is('threads') && ! Request::query() ? 'text-red-light' : '' }}">
+                    @include ('svgs.icons.all-threads', ['class' => 'mr-3 text-blue-darkest'])
                     All Threads
                 </a>
             </li>
@@ -23,11 +23,11 @@
             @if (auth()->check())
                 <li class="pb-3">
                     <a href="/threads?by={{ auth()->user()->username }}"
-                       class="flex items-center text-grey-darkest hover:text-blue hover:font-bold  {{ Request::query('by') ? 'text-blue font-bold' : '' }}"
+                       class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold  {{ Request::query('by') ? 'text-red-light ' : '' }}"
                     >
                         <img src="{{ auth()->user()->avatar_path }}"
                              alt="{{ auth()->user()->username }}"
-                             class="w-4 h-4 mr-3 bg-grey text-grey-darkest rounded-full p-1">
+                             class="w-4 h-4 mr-3 bg-blue-darkest rounded-full p-1">
 
                         My Threads
                     </a>
@@ -35,15 +35,15 @@
             @endif
 
             <li class="pb-3">
-                <a href="/threads?popular=1" class="flex items-center text-grey-darkest hover:text-blue hover:font-bold {{ Request::query('popular') ? 'text-blue font-bold' : '' }}">
-                    @include ('svgs.icons.star', ['class' => 'mr-3 text-grey'])
+                <a href="/threads?popular=1" class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold {{ Request::query('popular') ? 'text-red-light ' : '' }}">
+                    @include ('svgs.icons.star', ['class' => 'mr-3 text-blue-darkest'])
                     Popular Threads
                 </a>
             </li>
 
             <li>
-                <a href="/threads?unanswered=1" class="flex items-center text-grey-darkest hover:text-blue hover:font-bold {{ Request::query('unanswered') ? 'text-blue font-bold' : '' }}">
-                    @include ('svgs.icons.question', ['class' => 'mr-3 text-grey'])
+                <a href="/threads?unanswered=1" class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold {{ Request::query('unanswered') ? 'text-red-light ' : '' }}">
+                    @include ('svgs.icons.question', ['class' => 'mr-3 text-blue-darkest'])
                     Unanswered Threads
                 </a>
             </li>
@@ -57,7 +57,7 @@
             <ul class="list-reset">
                 @foreach ($trending as $thread)
                     <li class="pb-3 text-sm">
-                        <a href="{{ url($thread->path) }}" class="link text-blue">
+                        <a href="{{ url($thread->path) }}" class="hover:text-red-light no-underline text-grey-darkest">
                             {{ $thread->title }}
                         </a>
                     </li>

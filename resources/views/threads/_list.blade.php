@@ -3,7 +3,7 @@
         <div class="mr-4">
             <img src="{{ $thread->creator->avatar_path }}"
                      alt="{{ $thread->creator->username }}"
-                     class="w-8 h-8 bg-blue-darker rounded-full p-2">
+                     class="w-8 h-8 bg-red-light rounded-full p-2">
         </div>
 
         <div class="flex-1 {{ $loop->last ? '' : 'border-b border-blue-lightest' }}">
@@ -14,17 +14,20 @@
                     @endif
 
                     @if (auth()->check() && $thread->hasUpdatesFor(auth()->user()))
-                        <strong>
+                        <strong class="text  text-blue-darker mb-4">
                             {{ $thread->title }}
                         </strong>
                     @else
+                    <span class="text  text-blue-darker mb-4">
                         {{ $thread->title }}
+                        
+                    </span>
                     @endif
                 </a>
             </h3>
 
             <p class="text-2xs text-grey-darkest mb-4">
-                Posted By: <a href="{{ route('profile', $thread->creator) }}" class="text-blue">{{ $thread->creator->username }}</a>
+                Posted By: <a href="{{ route('profile', $thread->creator) }}" class="text-red-light">{{ $thread->creator->username }}</a>
             </p>
 
             <thread-view :thread="{{ $thread }}" inline-template class="mb-6 text-grey-darkest leading-loose pr-8">
@@ -32,7 +35,7 @@
             </thread-view>
 
             <div class="flex items-center text-xs mb-6">
-                <a class="btn bg-grey-light text-grey-darkest py-2 px-3 mr-4 text-2xs flex items-center" href="/threads/{{ $thread->channel->slug }}">
+                <a class="btn bg-grey-lighter hover:bg-red-light text-grey-darkest py-2 px-3 mr-4 text-2xs flex items-center" href="/threads/{{ $thread->channel->slug }}">
                     <span class="rounded-full h-2 w-2 mr-2" style="background: {{ $thread->channel->color }}"></span>
 
                     {{ ucwords($thread->channel->name) }}
@@ -48,7 +51,7 @@
                     {{ $thread->replies_count }} {{ str_plural('reply', $thread->replies_count) }}
                 </a>
 
-                <a class="btn ml-auto is-outlined text-grey-darker py-2 text-xs" href="{{ $thread->path() }}">read more</a>
+                <a class="btn ml-auto is-outlined hover:bg-red-light text-grey-darkest py-2 text-xs" href="{{ $thread->path() }}">read more</a>
             </div>
         </div>
     </div>

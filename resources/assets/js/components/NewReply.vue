@@ -17,7 +17,7 @@
             </div>
 
             <button type="submit"
-                    class="btn is-green"
+                    class="btn bg-red-light hover:bg-red-dark"
                     @click="addReply">Post</button>
         </div>
     </div>
@@ -28,55 +28,53 @@ import "jquery.caret";
 import "at.js";
 
 export default {
-    data() {
-        return {
-            body: ""
-        };
-    },
+  data() {
+    return {
+      body: ""
+    };
+  },
 
-    computed: {
-        confirmed() {
-            return window.App.user.confirmed;
-        }
-    },
-
-    mounted() {
-        $("#body").atwho({
-            at: "@",
-            delay: 750,
-            callbacks: {
-                remoteFilter: function(query, callback) {
-                    $.getJSON("/api/users", { name: query }, function(
-                        usernames
-                    ) {
-                        callback(usernames);
-                    });
-                }
-            }
-        });
-    },
-
-    methods: {
-        addReply() {
-            axios
-                .post(location.pathname + "/replies", { body: this.body })
-                .catch(error => {
-                    flash(error.response.data, "danger");
-                })
-                .then(({ data }) => {
-                    this.body = "";
-
-                    flash("Your reply has been posted.");
-
-                    this.$emit("created", data);
-                });
-        }
+  computed: {
+    confirmed() {
+      return window.App.user.confirmed;
     }
+  },
+
+  mounted() {
+    $("#body").atwho({
+      at: "@",
+      delay: 750,
+      callbacks: {
+        remoteFilter: function(query, callback) {
+          $.getJSON("/api/users", { name: query }, function(usernames) {
+            callback(usernames);
+          });
+        }
+      }
+    });
+  },
+
+  methods: {
+    addReply() {
+      axios
+        .post(location.pathname + "/replies", { body: this.body })
+        .catch(error => {
+          flash(error.response.data, "danger");
+        })
+        .then(({ data }) => {
+          this.body = "";
+
+          flash("Your reply has been posted.");
+
+          this.$emit("created", data);
+        });
+    }
+  }
 };
 </script>
 
 <style scoped>
 .new-reply {
-    background-color: #fff;
+  background-color: #fff;
 }
 </style>

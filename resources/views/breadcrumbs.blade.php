@@ -2,9 +2,10 @@
     <ol class="list-reset flex">
         <li>
             @if (Route::is('threads') && empty(Request::query()))
-                All Threads
+               <strong class="text-red-light">
+                    All Threads </strong> 
             @else
-                <a href="{{ route('threads') }}" class="text-blue font-bold">All Threads</a>
+                <a href="{{ route('threads') }}" class="text-red-light font-bold">All Threads</a>
             @endif
         </li>
 
@@ -14,30 +15,30 @@
         @endif
 
         @if (Route::is('channels'))
-            <li><span class="mx-2">&#10095;</span></li>
-            <li>{{ ucwords($channel->name) }}</li>
+            <li><span class="mx-2 text-red-light" >&#10095;</span></li>
+            <li class="text-grey-darkest">{{ ucwords($channel->name) }}</li>
         @endif
 
         @if (request()->has('popular'))
-            <li><span class="mx-2">&#10095;</span></li>
-            <li>Popular</li>
+            <li><span class="mx-2 text-red-light">&#10095;</span></li>
+            <li class="text-grey-darkest">Popular</li>
         @endif
 
         @if (request()->has('unanswered'))
-            <li><span class="mx-2">&#10095;</span></li>
-            <li>Unanswered</li>
+            <li><span class="mx-2 text-red-light">&#10095;</span></li>
+            <li class="text-grey-darkest">Unanswered</li>
         @endif
 
         @if (Route::is('threads.show'))
-            <li><span class="mx-2">&#10095;</span></li>
+            <li><span class="mx-2 text-red-light">&#10095;</span></li>
             <li>
-                <a href="{{ route('channels', $thread->channel) }}" class="text-blue font-bold">
+                <a href="{{ route('channels', $thread->channel) }}" class="text-red-light font-bold">
                     {{ ucwords($thread->channel->name) }}
                 </a>
             </li>
 
-            <li><span class="mx-2">&#10095;</span></li>
-            <li>{{ $thread->title }}</li>
+            <li><span class="mx-2 text-red-light">&#10095;</span></li>
+            <li class="text-grey-darkest">{{ $thread->title }}</li>
         @endif
     </ol>
 </nav>
