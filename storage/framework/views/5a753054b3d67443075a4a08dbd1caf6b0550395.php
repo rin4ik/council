@@ -3,7 +3,7 @@
         <div class="mr-4">
             <img src="<?php echo e($thread->creator->avatar_path); ?>"
                      alt="<?php echo e($thread->creator->username); ?>"
-                     class="w-8 h-8 bg-red-light rounded-full p-2">
+                     class="w-8 h-8 border-solid rounded-full ">
         </div>
 
         <div class="flex-1 <?php echo e($loop->last ? '' : 'border-b border-blue-lightest'); ?>">
@@ -38,7 +38,7 @@
 
             <div class="flex items-center text-xs mb-6">
                 <a class="btn bg-grey-lighter hover:bg-red-light text-grey-darkest py-2 px-3 mr-4 text-2xs flex items-center" href="/threads/<?php echo e($thread->channel->slug); ?>">
-                    <span class="rounded-full h-2 w-2 mr-2" style="background: <?php echo e($thread->channel->color); ?>"></span>
+                    <span class="rounded-full h-2 w-2 mr-2 hover:bg-white" style="background: <?php echo e($thread->channel->color); ?>"></span>
 
                     <?php echo e(ucwords($thread->channel->name)); ?>
 

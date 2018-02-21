@@ -29,7 +29,7 @@
 
                 
                 <div>
-                    <dropdown>
+                    <dropdown >
                         <div  slot="heading"
                              class="rounded-full bg-blue-darkest w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
                         >
@@ -38,19 +38,19 @@
                                  class="relative z-10 w-8  rounded-full">
                         </div>
 
-                        <template class="bg-red-light" slot="links">
+                        <template class="bg-red-light"  slot="links">
                             <li class="text-sm  pb-3">
-                                <a class="link" href="<?php echo e(route('profile', Auth::user())); ?>">My Profile</a>
+                                <a class="hover:text-red-light no-underline" href="<?php echo e(route('profile', Auth::user())); ?>">My Profile</a>
                             </li>
 
                             <?php if(Auth::user()->isAdmin()): ?>
                                 <li class="text-sm pb-3">
-                                    <a class="link" href="<?php echo e(route('admin.dashboard.index')); ?>">Admin</a>
+                                    <a class="hover:text-red-light no-underline" href="<?php echo e(route('admin.dashboard.index')); ?>">Admin</a>
                                 </li>
                             <?php endif; ?>
 
                             <li class="text-sm">
-                                <logout-button route="<?php echo e(route('logout')); ?>" class="link">Logout</logout-button>
+                                <logout-button route="<?php echo e(route('logout')); ?>" class="hover:text-red-light no-underline">Logout</logout-button>
                             </li>
                         </template>
                     </dropdown>

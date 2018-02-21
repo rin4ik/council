@@ -20,7 +20,7 @@
                         <?php echo e(method_field('DELETE')); ?>
 
 
-                        <button type="submit" class="btn bg-red">Delete Thread</button>
+                        <button type="submit" class="btn bg-red-light hover:bg-red">Delete Thread</button>
                     </form>
                 <?php endif; ?>
 
@@ -41,7 +41,7 @@
              alt="<?php echo e($thread->creator->username); ?>"
              width="36"
              height="36"
-             class="mr-1 bg-blue-darker rounded-full p-2">
+             class="mr-1 rounded-full">
 
         <div class="flex-1 border-b border-grey-lighter pb-8 ml-4">
             <h1 class="text-blue mb-2 text-2xl font-normal -mt-1" v-text="title"></h1>

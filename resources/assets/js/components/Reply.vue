@@ -2,11 +2,11 @@
     <div :id="'reply-'+id" class="border-b border-grey-lighter py-8" :class="isBest ? 'panel-success': 'panel-default'">
         <div class="flex">
             <div>
-                <img src="/images/avatars/default.svg"
+                <img src="/images/avatars/default.png"
                      :alt="reply.owner.name"
                      width="36"
                      height="36"
-                     class="mr-4 bg-blue-darker rounded-full p-2">
+                     class="mr-4 rounded-full ">
 
                 <div v-if="signedIn" class="text-xs pl-2" style="padding-top: 15px">
                     <favorite :reply="reply"></favorite>
@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="flex justify-between">
-                                <button class="btn bg-red" @click="destroy">Delete</button>
+                                <button class="btn bg-red-light hover:bg-red" @click="destroy">Delete</button>
 
                                 <div>
                                     <button class="btn mr-2" @click="cancel" type="button">Cancel</button>
@@ -72,77 +72,77 @@ import Highlight from "./Highlight.vue";
 import moment from "moment";
 
 export default {
-    props: ["reply"],
+  props: ["reply"],
 
-    components: { Favorite, Highlight },
+  components: { Favorite, Highlight },
 
-    data() {
-        return {
-            editing: false,
-            id: this.reply.id,
-            body: this.reply.body,
-            isBest: this.reply.isBest
-        };
+  data() {
+    return {
+      editing: false,
+      id: this.reply.id,
+      body: this.reply.body,
+      isBest: this.reply.isBest
+    };
+  },
+
+  computed: {
+    ago() {
+      return moment(this.reply.created_at).fromNow() + "...";
     },
 
-    computed: {
-        ago() {
-            return moment(this.reply.created_at).fromNow() + "...";
-        },
+    bestReplyClasses() {
+      let classes = [this.isBest ? "text-green" : "text-grey-light"];
 
-        bestReplyClasses() {
-            let classes = [this.isBest ? "text-green" : "text-grey-light"];
+      if (!this.authorize("owns", this.reply.thread)) {
+        classes.push("cursor-auto");
+      }
 
-            if (!this.authorize("owns", this.reply.thread)) {
-                classes.push("cursor-auto");
-            }
-
-            return classes;
-        }
-    },
-
-    created() {
-        window.events.$on("best-reply-selected", id => {
-            this.isBest = id === this.id;
-        });
-    },
-
-    methods: {
-        update() {
-            axios
-                .patch("/replies/" + this.id, {
-                    body: this.body
-                })
-                .catch(error => {
-                    flash(error.response.data, "danger");
-                });
-
-            this.editing = false;
-
-            flash("Updated!");
-        },
-
-        cancel() {
-            this.editing = false;
-
-            this.body = this.reply.body;
-        },
-
-        destroy() {
-            axios.delete("/replies/" + this.id);
-
-            this.$emit("deleted", this.id);
-        },
-
-        markBestReply() {
-            if (!this.authorize("owns", this.reply.thread)) {
-                return;
-            }
-
-            axios.post("/replies/" + this.id + "/best");
-
-            window.events.$emit("best-reply-selected", this.id);
-        }
+      return classes;
     }
+  },
+
+  created() {
+    window.events.$on("best-reply-selected", id => {
+      this.isBest = id === this.id;
+    });
+  },
+
+  methods: {
+    update() {
+      axios
+        .patch("/replies/" + this.id, {
+          body: this.body
+        })
+        .catch(error => {
+          flash(error.response.data, "danger");
+        });
+
+      this.editing = false;
+
+      flash("Updated!");
+    },
+
+    cancel() {
+      this.editing = false;
+
+      this.body = this.reply.body;
+    },
+
+    destroy() {
+      axios.delete("/replies/" + this.id);
+
+      this.$emit("deleted", this.id);
+    },
+
+    markBestReply() {
+      if (!this.authorize("owns", this.reply.thread)) {
+        return;
+      }
+
+      axios.post("/replies/" + this.id + "/best");
+
+      window.events.$emit("best-reply-selected", this.id);
+    }
+  }
 };
 </script>

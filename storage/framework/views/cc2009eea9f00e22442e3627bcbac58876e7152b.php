@@ -14,7 +14,7 @@
 
         <ul class="list-reset text-sm">
             <li class="pb-3">
-                <a href="/threads" class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold <?php echo e(Request::is('threads') && ! Request::query() ? 'text-red-light' : ''); ?>">
+                <a href="/threads" class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold <?php echo e(Request::is('threads') && ! Request::query() ? 'text-red' : ''); ?>">
                     <?php echo $__env->make('svgs.icons.all-threads', ['class' => 'mr-3 text-blue-darkest'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     All Threads
                 </a>
@@ -23,7 +23,7 @@
             <?php if(auth()->check()): ?>
                 <li class="pb-3">
                     <a href="/threads?by=<?php echo e(auth()->user()->username); ?>"
-                       class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold  <?php echo e(Request::query('by') ? 'text-red-light ' : ''); ?>"
+                       class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold  <?php echo e(Request::query('by') ? 'text-red ' : ''); ?>"
                     >
                         <img src="<?php echo e(auth()->user()->avatar_path); ?>"
                              alt="<?php echo e(auth()->user()->username); ?>"
@@ -35,14 +35,14 @@
             <?php endif; ?>
 
             <li class="pb-3">
-                <a href="/threads?popular=1" class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold <?php echo e(Request::query('popular') ? 'text-red-light ' : ''); ?>">
+                <a href="/threads?popular=1" class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold <?php echo e(Request::query('popular') ? 'text-red ' : ''); ?>">
                     <?php echo $__env->make('svgs.icons.star', ['class' => 'mr-3 text-blue-darkest'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     Popular Threads
                 </a>
             </li>
 
             <li>
-                <a href="/threads?unanswered=1" class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold <?php echo e(Request::query('unanswered') ? 'text-red-light ' : ''); ?>">
+                <a href="/threads?unanswered=1" class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold <?php echo e(Request::query('unanswered') ? 'text-red ' : ''); ?>">
                     <?php echo $__env->make('svgs.icons.question', ['class' => 'mr-3 text-blue-darkest'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     Unanswered Threads
                 </a>
