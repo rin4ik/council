@@ -2,7 +2,7 @@
     <?php echo $__env->yieldContent('sidebar-top'); ?>
 
     <div class="widget border-b-0">
-        <?php if(auth()->check()): ?>
+        <?php if (auth()->check()): ?>
             <button class="btn bg-red-light hover:bg-red-dark" @click="$modal.show('new-thread')">Add New Thread</button>
         <?php else: ?>
             <button class="btn is-green w-full tracking-wide" @click="$modal.show('login')">Log In To Post</button>
@@ -15,12 +15,12 @@
         <ul class="list-reset text-sm">
             <li class="pb-3">
                 <a href="/threads" class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold <?php echo e(Request::is('threads') && ! Request::query() ? 'text-red-light' : ''); ?>">
-                    <?php echo $__env->make('svgs.icons.all-threads', ['class' => 'mr-3 text-blue-darkest'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                    <?php echo $__env->make('svgs.icons.all-threads', ['class' => 'mr-3 text-blue-darkest'], array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     All Threads
                 </a>
             </li>
 
-            <?php if(auth()->check()): ?>
+            <?php if (auth()->check()): ?>
                 <li class="pb-3">
                     <a href="/threads?by=<?php echo e(auth()->user()->username); ?>"
                        class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold  <?php echo e(Request::query('by') ? 'text-red-light ' : ''); ?>"
@@ -36,26 +36,26 @@
 
             <li class="pb-3">
                 <a href="/threads?popular=1" class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold <?php echo e(Request::query('popular') ? 'text-red-light ' : ''); ?>">
-                    <?php echo $__env->make('svgs.icons.star', ['class' => 'mr-3 text-blue-darkest'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                    <?php echo $__env->make('svgs.icons.star', ['class' => 'mr-3 text-blue-darkest'], array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     Popular Threads
                 </a>
             </li>
 
             <li>
                 <a href="/threads?unanswered=1" class="flex items-center text-grey-darkest hover:text-red-light hover:font-bold <?php echo e(Request::query('unanswered') ? 'text-red-light ' : ''); ?>">
-                    <?php echo $__env->make('svgs.icons.question', ['class' => 'mr-3 text-blue-darkest'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                    <?php echo $__env->make('svgs.icons.question', ['class' => 'mr-3 text-blue-darkest'], array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     Unanswered Threads
                 </a>
             </li>
         </ul>
     </div>
 
-    <?php if(count($trending)): ?>
+    <?php if (count($trending)): ?>
         <div class="widget">
             <h4 class="widget-heading">Trending</h4>
 
             <ul class="list-reset">
-                <?php $__currentLoopData = $trending; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $trending; $__env->addLoop($__currentLoopData); foreach ($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <li class="pb-3 text-sm">
                         <a href="<?php echo e(url($thread->path)); ?>" class="hover:text-red-light no-underline text-grey-darkest">
                             <?php echo e($thread->title); ?>
