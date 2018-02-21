@@ -5,7 +5,7 @@
         @if (auth()->check())
             <button class="btn bg-red-light hover:bg-red-dark" @click="$modal.show('new-thread')">Add New Thread</button>
         @else
-            <button class="btn is-green w-full tracking-wide" @click="$modal.show('login')">Log In To Post</button>
+            <button class="btn bg-red-light hover:bg-red-dark w-full tracking-wide" @click="$modal.show('login')">Log In To Post</button>
         @endif
     </div>
 

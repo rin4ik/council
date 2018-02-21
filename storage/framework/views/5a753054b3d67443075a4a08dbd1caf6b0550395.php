@@ -1,4 +1,4 @@
-<?php $__empty_1 = true; $__currentLoopData = $threads; $__env->addLoop($__currentLoopData); foreach ($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+<?php $__empty_1 = true; $__currentLoopData = $threads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $thread): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
     <div class="flex <?php echo e($loop->last ? '' : 'mb-6 pb-4'); ?>">
         <div class="mr-4">
             <img src="<?php echo e($thread->creator->avatar_path); ?>"
@@ -9,11 +9,11 @@
         <div class="flex-1 <?php echo e($loop->last ? '' : 'border-b border-blue-lightest'); ?>">
             <h3 class="text-xl font-normal mb-2 tracking-tight">
                 <a href="<?php echo e($thread->path()); ?>" class="text-blue">
-                    <?php if ($thread->pinned): ?>
+                    <?php if($thread->pinned): ?>
                         Pinned:
                     <?php endif; ?>
 
-                    <?php if (auth()->check() && $thread->hasUpdatesFor(auth()->user())): ?>
+                    <?php if(auth()->check() && $thread->hasUpdatesFor(auth()->user())): ?>
                         <strong class="text  text-blue-darker mb-4">
                             <?php echo e($thread->title); ?>
 
@@ -45,12 +45,12 @@
                 </a>
 
                 <span class="mr-2 flex items-center text-grey-darker text-2xs font-semibold mr-4">
-                    <?php echo $__env->make('svgs.icons.eye', ['class' => 'mr-2'], array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    <?php echo $__env->make('svgs.icons.eye', ['class' => 'mr-2'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     <?php echo e($thread->visits); ?> visits
                 </span>
 
                 <a href="<?php echo e($thread->path()); ?>" class="mr-2 flex items-center text-grey-darker text-2xs font-semibold">
-                    <?php echo $__env->make('svgs.icons.book', ['class' => 'mr-2'], array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    <?php echo $__env->make('svgs.icons.book', ['class' => 'mr-2'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     <?php echo e($thread->replies_count); ?> <?php echo e(str_plural('reply', $thread->replies_count)); ?>
 
                 </a>

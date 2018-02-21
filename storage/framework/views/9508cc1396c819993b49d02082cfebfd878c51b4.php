@@ -3,7 +3,7 @@
         <div>
             <h1 class="font-normal text-2xl">
                 <a href="/" class="text-blue-lightest flex items-center">
-                    <?php echo $__env->make('svgs.logo', ['class' => 'mr-2'], array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    <?php echo $__env->make('svgs.logo', ['class' => 'mr-2'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     <?php echo e(config('app.name', 'Council')); ?>
 
                 </a>
@@ -21,10 +21,10 @@
                            <button type="submit">s</button>
                 </form>
 
-                <?php echo $__env->make('svgs.icons.search', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                <?php echo $__env->make('svgs.icons.search', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             </div>
 
-            <?php if (auth()->check()): ?>
+            <?php if(auth()->check()): ?>
                 <user-notifications></user-notifications>
 
                 
@@ -43,7 +43,7 @@
                                 <a class="hover:text-red-light no-underline" href="<?php echo e(route('profile', Auth::user())); ?>">My Profile</a>
                             </li>
 
-                            <?php if (Auth::user()->isAdmin()): ?>
+                            <?php if(Auth::user()->isAdmin()): ?>
                                 <li class="text-sm pb-3">
                                     <a class="hover:text-red-light no-underline" href="<?php echo e(route('admin.dashboard.index')); ?>">Admin</a>
                                 </li>
