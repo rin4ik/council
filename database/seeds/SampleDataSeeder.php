@@ -1,4 +1,5 @@
 <?php
+
 use App\Reply;
 use App\Thread;
 use App\Channel;
@@ -21,6 +22,7 @@ class SampleDataSeeder extends Seeder
         $this->channels()->content();
         Schema::enableForeignKeyConstraints();
     }
+
     /**
      * Seed the channels table.
      */
@@ -66,8 +68,10 @@ class SampleDataSeeder extends Seeder
                 'color' => $channel['color']
             ]);
         });
+
         return $this;
     }
+
     /**
      * Seed the thread-related tables.
      */
@@ -82,6 +86,7 @@ class SampleDataSeeder extends Seeder
             $this->recordActivity($thread, 'created', $thread->creator()->first()->id);
         });
     }
+
     /**
      * @param $model
      * @param $event_type

@@ -12,6 +12,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
+
     return [
         'name' => $faker->name,
         'username' => $faker->unique()->userName,
@@ -28,6 +29,7 @@ $factory->state(App\User::class, 'unconfirmed', function () {
 });
 $factory->define(App\Thread::class, function ($faker) {
     $title = $faker->sentence;
+
     return [
         'user_id' => function () {
             return factory('App\User')->create()->id;
@@ -44,6 +46,7 @@ $factory->define(App\Thread::class, function ($faker) {
 });
 $factory->state(App\Thread::class, 'from_existing_channels_and_users', function ($faker) {
     $title = $faker->sentence;
+
     return [
         'user_id' => function () {
             return \App\User::all()->random()->id;
