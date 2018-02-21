@@ -1,41 +1,29 @@
 <template>
-
-  <button type="button" class="btn btn-primary" @click="subscribe" v-text="sss" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
-">
-                      
-  </button>
-
-
+    <a href="#" class="ml-2 pl-2 border-l" :class="isActive ? 'font-bold': ''" @click.prevent="subscribe" v-text="isActive ? 'Subscribed' : 'Subscribe'"></a>
 </template>
+
 <script>
 export default {
-  props: ["active"],
-  data() {
-    return {
-      actived: this.active,
-      message: []
-    };
-  },
-  computed: {
-    sss() {
-      return this.actived ? "SUBSCRIBED" : "SUBSCRIBE";
+    props: ["active"],
+
+    data() {
+        return {
+            isActive: this.active
+        };
     },
-    signedIn() {
-      return window.App.signedIn;
+
+    methods: {
+        subscribe() {
+            axios[this.isActive ? "delete" : "post"](
+                location.pathname + "/subscriptions"
+            );
+
+            this.isActive = !this.isActive;
+
+            if (this.isActive) {
+                flash("Okay, we'll notify you when this thread is updated!");
+            }
+        }
     }
-  },
-  methods: {
-    messWhich() {
-      message = [];
-      return message;
-    },
-    subscribe() {
-      axios[this.actived ? "delete" : "post"](
-        location.pathname + "/subscriptions"
-      );
-      this.actived = !this.actived;
-      flash("Subscribed!");
-    }
-  }
 };
 </script>

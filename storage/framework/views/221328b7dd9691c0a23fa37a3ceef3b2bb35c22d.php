@@ -1,21 +1,15 @@
 <div class="panel panel-default">
-	<div class="panel-heading alert-success">
+    <div class="panel-heading">
+        <div class="level">
+            <span class="flex">
+                <?php echo e($heading); ?>
 
-		<div class="level">
-			<span class="flex">
-				<?php echo e($heading); ?>
+            </span>
+        </div>
+    </div>
 
-			</span>
-			<span>
-				<?php echo e($date); ?>
+    <div class="panel-body">
+        <?php echo e($body); ?>
 
-			</span>
-		</div>
-	</div>
-
-	<div class="panel-body">
-		<?php echo e($body); ?>
-
-
-	</div>
+    </div>
 </div>

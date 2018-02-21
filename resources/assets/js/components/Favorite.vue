@@ -1,50 +1,51 @@
 <template>
- <button type="submit"  @click='toggle' class="btn btn-link caps" :class="signedIn?'':'disabled'" style="padding-left:0px;  text-decoration:none;" >
-      <span v-text="count">  </span> <i class="glyphicon " :class="classes" aria-hidden="true" ></i></button>
+    <a href="#" @click.prevent="toggle" class="inline-block text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 20 19" class="fill-current mb-1" :class="active ? 'text-red' : 'text-red-light'">
+            <g fill="none" fill-rule="evenodd">
+                <path d="M-2-3h24v24H-2z"/>
+                <path :fill="active ? '#cc1f1a' : '#ef5753'" d="M14.5 0c-1.74 0-3.41.81-4.5 2.09C8.91.81 7.24 0 5.5 0 2.42 0 0 2.42 0 5.5c0 3.78 3.4 6.86 8.55 11.54L10 18.35l1.45-1.32C16.6 12.36 20 9.28 20 5.5 20 2.42 17.58 0 14.5 0z"/>
+            </g>
+        </svg>
+
+        <span v-text="count" class="block" :class="active ? 'text-red' : 'text-red-light'"></span>
+    </a>
 </template>
 
 <script>
 export default {
   props: ["reply"],
+
   data() {
     return {
       count: this.reply.favoritesCount,
       active: this.reply.isFavorited
     };
   },
+
   computed: {
-    classes() {
-      return [this.active ? "glyphicon-heart ol" : "glyphicon-heart-empty om"];
+    endpoint() {
+      return "/replies/" + this.reply.id + "/favorites";
     }
   },
-  created() {},
+
   methods: {
     toggle() {
       this.active ? this.destroy() : this.create();
     },
+
     create() {
-      axios.post("/replies/" + this.reply.id + "/favorites");
+      axios.post(this.endpoint);
+
       this.active = true;
       this.count++;
     },
+
     destroy() {
-      axios.delete("/replies/" + this.reply.id + "/favorites");
+      axios.delete(this.endpoint);
+
       this.active = false;
       this.count--;
     }
   }
 };
 </script>
-<style>
-.alert-flash {
-  position: fixed;
-  right: 25px;
-  bottom: 25px;
-}
-.ol {
-  color: #c21f1f;
-}
-.om {
-  color: #b93e3e;
-}
-</style>

@@ -1,98 +1,61 @@
-<nav class="navbar shadow " style="background-color:rgb(72, 71, 138); font-family:Montserrat,Helvetica,Arial,sans-serif;">
+<nav class="bg-blue-darkest py-3">
+    <div class="container mx-auto flex justify-between items-center text-blue-lightest pl-6">
+        <div>
+            <h1 class="font-normal text-2xl">
+                <a href="/" class="text-blue-lightest flex items-center">
+                    <?php echo $__env->make('svgs.logo', ['class' => 'mr-2'], array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    <?php echo e(config('app.name', 'Council')); ?>
 
-	<div class="container ">
-		<div class="navbar-header">
+                </a>
+            </h1>
+        </div>
 
-			<!-- Collapsed Hamburger -->
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-				<span class="sr-only">Toggle Navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
+        <div class="flex" v-cloak>
+            <div class="search-wrap rounded-full bg-blue-darkest w-10 cursor-pointer h-10 flex items-center justify-center mr-4 relative" @mouseover="search" @mouseout="searching = false">
+                <form method="GET" action="/threads/search" v-show="searching">
+                    <input type="text"
+                           placeholder="Search for something..."
+                           name="q"
+                           ref="search"
+                           class="search-input absolute pin-r pin-t h-full rounded bg-red-light border-none pl-6 pr-10 text-white">
+                           <button type="submit">s</button>
+                </form>
 
-			<!-- Branding Image -->
-			<a class="navbar-brand" href="<?php echo e(url('/')); ?>" style="font-weight:600; color:white; font-size:15px">
-				<?php echo e(config('app.name')); ?>
+                <?php echo $__env->make('svgs.icons.search', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            </div>
 
-			</a>
-		</div>
+            <?php if (auth()->check()): ?>
+                <user-notifications></user-notifications>
 
-		<div class="collapse navbar-collapse" id="app-navbar-collapse">
-			<!-- Left Side Of Navbar -->
-			<ul class="nav navbar-nav">
+                
+                <div>
+                    <dropdown >
+                        <div  slot="heading"
+                             class="rounded-full bg-blue-darkest w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
+                        >
+                            <img src="<?php echo e(auth()->user()->avatar_path); ?>"
+                                 alt="<?php echo e(auth()->user()->username); ?>"
+                                 class="relative z-10 w-8  rounded-full">
+                        </div>
 
-				<li class="dropdown ">
-					<a href="#" class="dropdown-toggle caps" style="color: white;" data-toggle="dropdown" role="button" aria-expanded="false"
-					 aria-haspopup="true">
-						Browse
-						<span class="caret"></span>
-					</a>
+                        <template class="bg-red-light"  slot="links">
+                            <li class="text-sm  pb-3">
+                                <a class="hover:text-red-light no-underline" href="<?php echo e(route('profile', Auth::user())); ?>">My Profile</a>
+                            </li>
 
-					<ul class="dropdown-menu">
-						<li>
-							<a href="/threads">All Threads</a>
-						</li>
-						<?php if (auth()->guard()->check()): ?>
-						<li>
-							<a href="/threads?by=<?php echo e(auth()->user()->name); ?>">My Threads</a>
-						</li>
-						<?php endif; ?>
-						<li>
-							<a href="/threads?popular=1">Popular Threads</a>
-						</li>
-						<li>
-							<a href="/threads?unanswered=1">Unanswered Threads</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a class="caps" href="/threads/create" style="color: white;">New Thread</a>
-				</li>
-				<channel-dropdown :channels="<?php echo e($channels); ?>"></channel-dropdown>
-			</ul>
-			<!-- Right Side Of Navbar -->
-			<ul class="nav navbar-nav navbar-right">
-				<!-- Authentication Links -->
-				<?php if (auth()->guard()->guest()): ?>
-				<li>
-					<a class="caps" href="<?php echo e(route('login')); ?>" style="color: white;">Login</a>
-				</li>
-				<li>
-					<a class="caps" href="<?php echo e(route('register')); ?> " style="color: white;">Register</a>
-				</li>
-				<?php else: ?> 
-				<user-notifications></user-notifications>
-				<?php if (Auth::user()->isAdmin()): ?>
-		               <li><a style="color: white;" href="/admin"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
-				                  <?php endif; ?>
-				<li class="dropdown">
-					<a class="caps" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"
-					 style="color: white;">
-						<?php echo e(Auth::user()->name); ?>
+                            <?php if (Auth::user()->isAdmin()): ?>
+                                <li class="text-sm pb-3">
+                                    <a class="hover:text-red-light no-underline" href="<?php echo e(route('admin.dashboard.index')); ?>">Admin</a>
+                                </li>
+                            <?php endif; ?>
 
-						<span class="caret"></span>
-					</a>
-
-					<ul class="dropdown-menu">
-						<li>
-							<a href="/profiles/<?php echo e(Auth::user()->name); ?>">My Profile</a>
-						</li>
-						<li>
-							<a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
-														 document.getElementById('logout-form').submit();">
-								Logout
-							</a>
-
-							<form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
-								<?php echo e(csrf_field()); ?>
-
-							</form>
-						</li>
-					</ul>
-				</li>
-				<?php endif; ?>
-			</ul>
-		</div>
-	</div>
+                            <li class="text-sm">
+                                <logout-button route="<?php echo e(route('logout')); ?>" class="hover:text-red-light no-underline">Logout</logout-button>
+                            </li>
+                        </template>
+                    </dropdown>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
 </nav>

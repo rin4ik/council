@@ -1,9 +1,10 @@
-@component('profiles.activities.activity') @slot('heading')
-<i class="glyphicon glyphicon-edit" aria-hidden="true" style="
-    margin-right:2px;"> </i>
-{{$profileUser->name}} published
-<a href="{{$activ->subject->path()}}">
-	{{$activ->subject->title}}
-</a>
-@endslot @slot('date') {{$activ->subject->created_at->diffForHumans()}} @endslot @slot('body') {!! $activ->subject->body
-!!} @endslot @endcomponent
+@component('profiles.activities.activity')
+    @slot('heading')
+        {{ $profileUser->username }} published
+        <a href="{{ $activity->subject->path() }}">{{ $activity->subject->title }}</a>
+    @endslot
+
+    @slot('body')
+        {!! $activity->subject->body !!}
+    @endslot
+@endcomponent

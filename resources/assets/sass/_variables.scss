@@ -1,46 +1,38 @@
+
 // Body
-$body-bg: #ffffff;
+$body-bg: #f5f8fa;
+
 // Borders
-$blue: #51b9d6;
-// Add pink and its invert
-$pink: #e49c9c;
-$pink-invert: #fff;
-$navbar-item-hover-color:rgb(150, 56, 56);
-$navbar-item-hover-background-color: rgb(91, 91, 172);
-$navbar-item-active-color:rgb(185, 63, 63);
-$navbar-item-active-background-color:rgb(105, 105, 211);
 $laravel-border-color: darken($body-bg, 10%);
 $list-group-border: $laravel-border-color;
 $navbar-default-border: $laravel-border-color;
 $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
+
 // Brands
-$brand-primary: rgb(31, 141, 201);
-$brand-info: #5097c0;
-$brand-success: #00c763;
-$brand-warning: #ecf01d;
-$brand-danger: #e73e3e;
+$brand-primary: #3097D1;
+$brand-info: #8eb4cb;
+$brand-success: #2ab27b;
+$brand-warning: #cbb956;
+$brand-danger: #bf5329;
+
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif:-apple-system,
-BlinkMacSystemFont,
-'Segoe UI',
-Roboto,
-Oxygen,
-Ubuntu,
-Cantarell,
-'Open Sans',
-'Helvetica Neue',
-sans-serif;
+$font-family-sans-serif: "Raleway", sans-serif;
+$font-size-base: 14px;
 $line-height-base: 1.6;
-$text-color: #555d61;
+$text-color: #636b6f;
+
 // Navbar
-$navbar-default-bg: rgb(156, 111, 111);
+$navbar-default-bg: #fff;
+
 // Buttons
 $btn-default-color: $text-color;
+
 // Inputs
 $input-border: lighten($text-color, 40%);
 $input-border-focus: lighten($brand-primary, 25%);
 $input-color-placeholder: lighten($text-color, 30%);
+
 // Panels
-$panel-default-heading-bg: rgb(252, 252, 252);
+$panel-default-heading-bg: #fff;

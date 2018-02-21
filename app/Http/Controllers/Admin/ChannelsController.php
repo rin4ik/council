@@ -15,7 +15,7 @@ class ChannelsController extends Controller
      */
     public function index()
     {
-        $channels = Channel::withArchived()->withCount('threads')->get();
+        $channels = Channel::withArchived()->with('threads')->get();
 
         return view('admin.channels.index', compact('channels'));
     }
@@ -54,7 +54,9 @@ class ChannelsController extends Controller
                 'archived' => 'required|boolean'
             ])
         );
+
         cache()->forget('channels');
+
         if (request()->wantsJson()) {
             return response($channel, 200);
         }
@@ -70,13 +72,15 @@ class ChannelsController extends Controller
      */
     public function store()
     {
-        $data = request()->validate([
-                       'name' => 'required|unique:channels',
-                       'description' => 'required',
-                ]);
+        $channel = Channel::create(
+            request()->validate([
+                'name' => 'required|unique:channels',
+                'description' => 'required',
+            ])
+        );
 
-        $channel = Channel::create($data + ['slug' => str_slug($data['name'])]);
         cache()->forget('channels');
+
         if (request()->wantsJson()) {
             return response($channel, 201);
         }

@@ -1,80 +1,106 @@
 <template>
-        <div :id="'reply-'+id" class="panel shadow" :class="isBest? 'panel-success' : 'panel-default'">
-                <div class="panel-heading" style="padding-top:1px;padding-bottom:1px;">
+    <div :id="'reply-'+id" class="border-b border-grey-lighter py-8" :class="isBest ? 'panel-success': 'panel-default'">
+        <div class="flex">
+            <div>
+                <img src="/images/avatars/default.png"
+                     :alt="reply.owner.name"
+                     width="36"
+                     height="36"
+                     class="mr-4 rounded-full ">
 
-                        <div class="level">
-                                <h5 class="flex">
-                                        <a :href="'/profiles/'+reply.owner.name" v-text="reply.owner.name"style=" font-size: 16px;">
-                                        </a> said <span v-text="ago"></span>
-                                </h5>
-                                <div v-if="authorize('owns',reply)">                       
-                        <button type="submit" class="btn btn-link" style="font-weight: 700; width:30px;margin-top: -45px;
-                        margin-right: -19px; height:20px;" @click="destroy">
-                                        <i class="	glyphicon glyphicon-trash" style="color:rgba(24, 24, 26, 0.77);" aria-hidden="true"></i>
-
-                                </button>
-                                </div>
-                        </div>
+                <div v-if="signedIn" class="text-xs pl-2" style="padding-top: 15px">
+                    <favorite :reply="reply"></favorite>
                 </div>
-                <div class="panel-body">
-                        <div v-if="editing">
-                                <form @submit="update">
-                                <div class="form-group">
-                                        <wysiwyg v-model="body"></wysiwyg>
-                                </div>
-                                <button class="btn btn-xs btn-success caps">Update</button>
-                                <button class="btn btn-xs btn-danger caps" @click="editing=false" 
-                                type="button">Cancel</button>
-                                </form>
-                        </div>
-                        <div v-else v-html="body">  
-                        </div>
-                </div>
-                       <div class='level'>
-                      <div v-if="authorize('owns',reply)" style="padding: 0; background-color: white; float:left">
-                        
-                        <button class="btn is-small btn-link caps" @click="editing = true" style="box-shadow:0; padding-right:0">
-                                <i class="	glyphicon glyphicon-edit"  aria-hidden="true"></i> Edit</button>
-                         </div>  
-                         
-                       
-                                 <favorite :reply="reply" style="padding-left:10px;"></favorite> 
-                                
-                                 <p v-if="signedIn" class="ml-a"><button class="btn btn-link caps" v-if="authorize('owns',reply.thread)" @click="markBestReply" v-show="!isBest" style="box-shadow:0;color:rgb(60, 150, 60)">Best Reply?</button></p>
-                                 <p class="ml-a" @click="markBestReply" style="color:#3c763d" v-show="isBest" >Best <i class="	glyphicon glyphicon-check " style="-webkit-text-stroke: 1px white;font-weight: 100;color:#3c763d" aria-hidden="true"></i></p>
-                                   
-                        </div>     
-           
-                        
-                       
-</div>
+            </div>
 
+            <div class="flex-1 ml-1">
+                <div class="flex items-center mb-6 mt-2">
+                    <div class="flex flex-1">
+                        <h5 class="font-normal">
+                            <a class="text-blue font-bold link" :href="'/profiles/' + reply.owner.name" v-text="reply.owner.name"></a>
+                        </h5>
+
+                        <a v-if="! editing && (authorize('owns', reply) || authorize('owns', reply.thread))"
+                           href="#"
+                           @click.prevent="editing = true"
+                           class="text-blue text-xs link ml-2 pl-2 border-l"
+                        >
+                            Edit
+                        </a>
+                    </div>
+
+                    <div class="text-2xs flex items-center">
+                        <a v-if="authorize('owns', reply.thread) || isBest" href="#" class="mr-2 font-bold flex items-center" :class="bestReplyClasses" @click.prevent="markBestReply">
+                            <span v-text="isBest ? 'Best Answer!' : 'Best Answer?'" class="mr-2"></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" class="fill-current" :class="isBest ? 'text-green' : 'text-grey-light'">
+                                <path fill-rule="evenodd" d="M9.99 0C4.47 0 0 4.48 0 10s4.47 10 9.99 10C15.52 20 20 15.52 20 10S15.52 0 9.99 0zm4.24 16L10 13.45 5.77 16l1.12-4.81-3.73-3.23 4.92-.42L10 3l1.92 4.53 4.92.42-3.73 3.23L14.23 16z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div v-if="editing">
+                        <form @submit.prevent="update">
+                            <div class="mb-4">
+                                <wysiwyg v-model="body"></wysiwyg>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <button class="btn bg-red-light hover:bg-red" @click="destroy">Delete</button>
+
+                                <div>
+                                    <button class="btn mr-2" @click="cancel" type="button">Cancel</button>
+                                    <button type="submit" class="btn bg-blue">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div v-else>
+                        <highlight :content="body"></highlight>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
 import Favorite from "./Favorite.vue";
+import Highlight from "./Highlight.vue";
 import moment from "moment";
 
 export default {
   props: ["reply"],
-  components: { Favorite },
+
+  components: { Favorite, Highlight },
+
   data() {
     return {
       editing: false,
-      body: this.reply.body,
       id: this.reply.id,
+      body: this.reply.body,
       isBest: this.reply.isBest
     };
   },
+
   computed: {
     ago() {
-      return (
-        moment(this.reply.created_at)
-          .add(120, "minutes")
-          .from(moment()) + "..."
-      );
+      return moment(this.reply.created_at).fromNow() + "...";
+    },
+
+    bestReplyClasses() {
+      let classes = [this.isBest ? "text-green" : "text-grey-light"];
+
+      if (!this.authorize("owns", this.reply.thread)) {
+        classes.push("cursor-auto");
+      }
+
+      return classes;
     }
   },
+
   created() {
     window.events.$on("best-reply-selected", id => {
       this.isBest = id === this.id;
@@ -89,23 +115,34 @@ export default {
         })
         .catch(error => {
           flash(error.response.data, "danger");
-        })
-        .then(({ data }) => {
-          this.editing = false;
-          flash("Updated!!");
         });
+
+      this.editing = false;
+
+      flash("Updated!");
     },
+
+    cancel() {
+      this.editing = false;
+
+      this.body = this.reply.body;
+    },
+
     destroy() {
       axios.delete("/replies/" + this.id);
+
       this.$emit("deleted", this.id);
     },
+
     markBestReply() {
-      axios.post("/replies/" + this.reply.id + "/best");
+      if (!this.authorize("owns", this.reply.thread)) {
+        return;
+      }
+
+      axios.post("/replies/" + this.id + "/best");
+
       window.events.$emit("best-reply-selected", this.id);
     }
   }
 };
 </script>
-<style>
-
-</style>

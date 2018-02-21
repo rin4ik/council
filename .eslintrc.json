@@ -9,11 +9,11 @@
         // add more generic rulesets here, such as:
         "eslint:recommended",
         "plugin:vue/recommended"
-      ],
+    ],
     "parserOptions": {
         "ecmaFeatures": {
-        "jsx": false
-        },  
+            "jsx": false
+        },
         "sourceType": "module"
     },
     "rules": {
@@ -24,9 +24,9 @@
         "no-unused-vars": ["warn", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
         "constructor-super": "warn",
         "valid-typeof": "warn",
-        "eqeqeq":"warn",
+        "eqeqeq": "warn",
         "vue/valid-v-if": "error",
         "no-console": 0
     }
-    
+
 }

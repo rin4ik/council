@@ -1,49 +1,49 @@
 <template>
-<div class="reply shadow">
-<div>
-    <div v-if="!signedIn">
-   <p class="text-center">   Please
-                <a href="/login">sign in</a> to participate in this discussion
-      </p> 
-               
-                
-    </div>
+    <div class="py-6 ml-10">
+        <div v-if="! signedIn">
+            <p class="text-center text-sm text-grey-dark">
+                Please <a href="/login" @click.prevent="$modal.show('login')" class="text-blue link">sign in</a> to participate in this
+                discussion.
+            </p>
+        </div>
 
-           <div class="text-center" v-else-if="!confirmed">
+        <div v-else-if="! confirmed">
             To participate in this thread, please check your email and confirm your account.
         </div>
-             <div  v-else>
- <div class="form-group">
-                   <wysiwyg name="body" v-model="body" placeholder="Have something to say?" :shouldClear="completed"></wysiwyg>
-                   
-               </div>
-               <button type="submit" @click="addReply" class="btn shadow btn-default ">POST</button>
-             </div>
-         
-</div>
-</div>
+
+        <div v-else>
+            <div class="mb-3">
+                <wysiwyg name="body" v-model="body" placeholder="Have something to say?"></wysiwyg>
+            </div>
+
+            <button type="submit"
+                    class="btn bg-red-light hover:bg-red-dark"
+                    @click="addReply">Post</button>
+        </div>
+    </div>
 </template>
 
-
 <script>
-import Reply from "./Reply.vue";
+import "jquery.caret";
+import "at.js";
 
 export default {
   data() {
     return {
-      body: "",
-      completed: false
+      body: ""
     };
   },
+
   computed: {
     confirmed() {
       return window.App.user.confirmed;
     }
   },
+
   mounted() {
     $("#body").atwho({
       at: "@",
-      delay: 2000,
+      delay: 750,
       callbacks: {
         remoteFilter: function(query, callback) {
           $.getJSON("/api/users", { name: query }, function(usernames) {
@@ -53,6 +53,7 @@ export default {
       }
     });
   },
+
   methods: {
     addReply() {
       axios
@@ -62,19 +63,18 @@ export default {
         })
         .then(({ data }) => {
           this.body = "";
-          this.completed = true;
+
           flash("Your reply has been posted.");
+
           this.$emit("created", data);
         });
     }
   }
 };
 </script>
+
 <style scoped>
-.reply {
-  background-color: white;
-  padding: 15px;
-  border: 1px solid #e3e0e0;
-  border-radius: 5px;
+.new-reply {
+  background-color: #fff;
 }
 </style>
