@@ -48,8 +48,10 @@
         </div>
 
         <flash  class="animated fadeInRight" message="{{ session('flash') }}"></flash>
-
+<div v-cloak>
         @include('modals.all')
+</div>
+    
     </div>
 
     <!-- Scripts -->
