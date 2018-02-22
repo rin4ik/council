@@ -1,5 +1,5 @@
 @if (auth()->check())
-    <modal name="new-thread" height="auto" transition="slide">
+    <modal name="new-thread" height="auto" transition="slide" v-cloak>
         <form method="POST" action="/threads" class="p-6 py-8">
             {{ csrf_field() }}
 
@@ -33,8 +33,8 @@
             </div>
 
             <div class="flex justify-end">
-                <a href="#" class="btn mr-4" @click="$modal.hide('new-thread')">Cancel</a>
-                <button type="submit" class="btn is-green">Publish</button>
+                <a href="#" class="btn mr-4 hover:bg-red" @click="$modal.hide('new-thread')">Cancel</a>
+                <button type="submit" class="btn bg-green hover:bg-green-dark">Publish</button>
             </div>
 
             @if (count($errors))

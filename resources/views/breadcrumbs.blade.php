@@ -2,10 +2,10 @@
     <ol class="list-reset flex">
         <li>
             @if (Route::is('threads') && empty(Request::query()))
-               <strong class="text-red-light">
+               <strong class="text-black">
                     All Threads </strong> 
             @else
-                <a href="{{ route('threads') }}" class="text-red-light font-bold">All Threads</a>
+                <a href="{{ route('threads') }}" class="text-black">All Threads</a>
             @endif
         </li>
 
@@ -32,7 +32,7 @@
         @if (Route::is('threads.show'))
             <li><span class="mx-2 text-red-light">&#10095;</span></li>
             <li>
-                <a href="{{ route('channels', $thread->channel) }}" class="text-red-light font-bold">
+                <a href="{{ route('channels', $thread->channel) }}" class="text-black">
                     {{ ucwords($thread->channel->name) }}
                 </a>
             </li>

@@ -1,5 +1,5 @@
 <register inline-template>
-    <modal name="register" height="auto">
+    <modal name="register" height="auto" v-cloak>
         <form class="p-10" @submit.prevent="register">
             <div class="mb-6">
                 <label for="name" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">Name</label>

@@ -4,10 +4,10 @@
 
         <ul class="list-reset">
             @foreach ($channels as $channel)
-                <li class="text-xs pb-3 flex">
+                <li class="animated slideInUp text-xs pb-3 flex">
                     <span class="rounded-full h-3 w-3 mr-2" style="background: {{ $channel->color }}"></span>
 
-                    <a href="{{ route('channels', $channel) }}" class="link hover:text-red-light" style="text-decoration:none">
+                    <a href="{{ route('channels', $channel) }}" class="no-underline hover:text-red-light" >
                         {{ ucwords($channel->name) }}
                     </a>
                 </li>

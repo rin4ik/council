@@ -1,5 +1,5 @@
 <login inline-template>
-    <modal name="login" height="auto">
+    <modal name="login" height="auto" v-cloak>
         <form class="p-10" @submit.prevent="login" @keydown="feedback = ''">
             <div class="mb-6">
                 <label for="email" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">Email</label>

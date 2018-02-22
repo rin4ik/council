@@ -17,15 +17,15 @@
                 <div class="flex items-center mb-6 mt-2">
                     <div class="flex flex-1">
                         <h5 class="font-normal">
-                            <a class="text-blue font-bold link" :href="'/profiles/' + reply.owner.name" v-text="reply.owner.name"></a>
+                            <a class="text-grey-darkest font-bold no-underline uppercase" :href="'/profiles/' + reply.owner.username" v-text="reply.owner.name"></a>
                         </h5>
 
                         <a v-if="! editing && (authorize('owns', reply) || authorize('owns', reply.thread))"
                            href="#"
                            @click.prevent="editing = true"
-                           class="text-blue text-xs link ml-2 pl-2 border-l"
+                           class="text-blue text-xs no-underline ml-2 pl-2 border-l"
                         >
-                            Edit
+                            EDIT
                         </a>
                     </div>
 
@@ -47,11 +47,11 @@
                             </div>
 
                             <div class="flex justify-between">
-                                <button class="btn bg-red-light hover:bg-red" @click="destroy">Delete</button>
+                                <button class="uppercase btn w-15 h-9 text-xs pl-2 pr-2 bg-red-light hover:bg-red" @click="destroy">Delete</button>
 
                                 <div>
-                                    <button class="btn mr-2" @click="cancel" type="button">Cancel</button>
-                                    <button type="submit" class="btn bg-blue">Update</button>
+                                    <button class="uppercase btn w-15 h-9 text-xs pl-2 pr-2 hover:bg-red-light bg-transparent border border-red text-red-dark" @click="cancel" type="button">Cancel</button>
+                                    <button type="submit" class="uppercase btn bg-transparent border border-blue w-15 h-9 text-blue-dark text-xs hover:bg-blue pl-2 pr-2">Update</button>
                                 </div>
                             </div>
                         </form>

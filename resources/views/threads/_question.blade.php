@@ -1,6 +1,6 @@
 {{-- Editing the question. --}}
 <modal name="update-thread" height="auto" style="display:none;">
-    <div class="p-6 py-8">
+    <div class=" p-6 py-8">
         <div class="mb-6 -mx-4">
             <div class="px-4 mb-6">
                 <input type="text" class="w-full p-2 leading-normal" v-model="form.title">
@@ -23,7 +23,7 @@
                 @endcan
 
                 <div>
-                    <button class="btn mr-2" @click="resetForm">Cancel</button>
+                    <button class="btn mr-2 hover:bg-red" @click="resetForm">Cancel</button>
                     <button class="btn bg-blue" @click="update">Update</button>
                 </div>
             </div>
@@ -45,17 +45,17 @@
             <h1 class="text-blue mb-2 text-2xl font-normal -mt-1" v-text="title"></h1>
 
             <p class="text-xs text-grey-darker mb-4">
-                Posted by <a href="{{ route('profile', $thread->creator) }}" class="text-blue link">
+                Posted by <a href="{{ route('profile', $thread->creator) }}" class="text-red-light no-underline">
                     {{ $thread->creator->username }} ({{ $thread->creator->reputation }} XP)
                 </a>
 
-                <span v-if="! editing">
+                <span v-if="! editing" v-cloak>
                     <span v-if="(authorize('isAdmin') || authorize('owns', thread))">
-                        <a href="#" class="text-blue link pl-2 ml-2 border-l" @click.prevent="editing = true">Edit</a>
+                        <a href="#" class="text-blue-darkest uppercase pl-2 ml-2 border-l border-green-lighter" @click.prevent="editing = true">Edit</a>
 
-                        <span v-if="authorize('isAdmin')">
-                            <a href="#" class="link pl-2 ml-2 border-l" :class="locked ? 'font-bold' : ''" @click.prevent="toggleLock" v-text="locked ? 'Unlock' : 'Lock'"></a>
-                            <a href="#" class="link pl-2 ml-2 border-l" :class="pinned ? 'font-bold' : ''" @click.prevent="togglePin" v-text="pinned ? 'Unpin' : 'Pin'"></a>
+                        <span v-if="authorize('isAdmin')" v-cloak>
+                            <a href="#" class="no-underline pl-2 ml-2 border-l border-purple-lighter uppercase" :class="locked ? 'font-bold text-red' : ''" @click.prevent="toggleLock" v-text="locked ? 'Unlock' : 'Lock'"></a>
+                            <a href="#" class="no-underline pl-2 ml-2 border-l border-purple-lighter uppercase" :class="pinned ? 'font-bold text-red' : ''" @click.prevent="togglePin" v-text="pinned ? 'Unpin' : 'Pin'"></a>
                         </span>
                     </span>
 

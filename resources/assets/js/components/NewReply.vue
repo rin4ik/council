@@ -17,7 +17,7 @@
             </div>
 
             <button type="submit"
-                    class="btn bg-red-light hover:bg-red-dark"
+                    class="btn bg-green hover:bg-green-dark"
                     @click="addReply">Post</button>
         </div>
     </div>
