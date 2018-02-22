@@ -1,12 +1,12 @@
 @forelse ($threads as $thread)
-    <div class=" flex {{ $loop->last ? '' : 'mb-6 pb-4' }}">
+    <div class=" flex {{ $loop->last ? '' : 'border border-grey-lighter shadow p-8 mb-6 pb-4' }}">
         <div class="mr-4 ">
             <img src="{{ $thread->creator->avatar_path }}"
                      alt="{{ $thread->creator->username }}"
                      class="w-8 h-8 border-solid rounded-full ">
         </div>
 
-        <div class= "flex-1 {{ $loop->last ? '' : 'border-b border-blue-lightest' }}">
+        <div class= "flex-1 ">
             <h3 class="text-xl font-normal mb-2 tracking-tight">
                 <a href="{{ $thread->path() }}" class="text-blue">
                     @if ($thread->pinned)
@@ -14,11 +14,11 @@
                     @endif
 
                     @if (auth()->check() && $thread->hasUpdatesFor(auth()->user()))
-                        <strong class="text  text-blue-darker mb-4">
+                        <span class="text  text-blue-dark mb-4">
                             {{ $thread->title }}
-                        </strong>
+                        </span>
                     @else
-                    <span class="text  text-blue-darker mb-4">
+                    <span class="text  text-blue-light mb-4">
                         {{ $thread->title }}
                         
                     </span>
@@ -47,9 +47,9 @@
                 </span>
 
                 <a href="{{ $thread->path() }}" class="mr-2 flex items-center text-grey-darker text-2xs font-semibold">
-                    @include ('svgs.icons.book', ['class' => 'mr-2'])
-                    {{ $thread->replies_count }} {{ str_plural('reply', $thread->replies_count) }}
-                </a>
+                        @include ('svgs.icons.book', ['class' => 'mr-2'])
+                        {{ $thread->replies_count }} {{ str_plural('reply', $thread->replies_count) }}
+                    </a>
 
                 <a class=" btn ml-auto is-outlined hover:bg-red-light text-grey-darkest py-2 text-xs" href="{{ $thread->path() }}">read more</a>
             </div>
