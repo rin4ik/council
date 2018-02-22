@@ -23,6 +23,10 @@
             <li><span class="mx-2 text-red-light">&#10095;</span></li>
             <li class="text-grey-darkest">Popular</li>
         @endif
+        @if (request()->has('by'))
+        <li><span class="mx-2 text-red-light">&#10095;</span></li>
+        <li class="text-grey-darkest">My Threads</li>
+    @endif
 
         @if (request()->has('unanswered'))
             <li><span class="mx-2 text-red-light">&#10095;</span></li>
