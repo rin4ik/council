@@ -29,18 +29,18 @@
             </div>
 
             <div class="mb-6">
-                <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.key') }}"></div>
+                <div class="g-recaptcha" data-sitekey="6Lez7UAUAAAAAKp4qnOA1I6VSK46bn9gQUtJ3aPy"></div>
             </div>
 
-            <div class="flex justify-end">
-                <a href="#" class="btn mr-4 hover:bg-red" @click="$modal.hide('new-thread')">Cancel</a>
-                <button type="submit" class="btn bg-green hover:bg-green-dark">Publish</button>
+            <div class="flex justify-end ">
+                <a href="#" class="btn mr-4 hover:bg-red uppercase text-xs" @click="$modal.hide('new-thread')">Cancel</a>
+                <button type="submit" class="btn bg-green hover:bg-green-dark uppercase text-xs">Publish</button>
             </div>
 
             @if (count($errors))
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li class="list-reset text-red">{{ $error }}</li>
                     @endforeach
                 </ul>
             @endif

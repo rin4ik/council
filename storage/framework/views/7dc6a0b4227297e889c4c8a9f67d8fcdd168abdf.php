@@ -1,4 +1,4 @@
-<?php if (auth()->check()): ?>
+<?php if(auth()->check()): ?>
     <modal name="new-thread" height="auto" transition="slide" v-cloak>
         <form method="POST" action="/threads" class="p-6 py-8">
             <?php echo e(csrf_field()); ?>
@@ -16,7 +16,7 @@
                     <select name="channel_id" id="channel_id" class="block appearance-none w-full bg-white rounded-none border border-grey-light text-grey-darker py-2 px-4 leading-normal pr-8" required>
                         <option value="">Choose One...</option>
 
-                        <?php $__currentLoopData = $channels; $__env->addLoop($__currentLoopData); foreach ($__currentLoopData as $channel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php $__currentLoopData = $channels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $channel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($channel->id); ?>" <?php echo e(old('channel_id') == $channel->id ? 'selected' : ''); ?>>
                                 <?php echo e($channel->name); ?>
 
@@ -31,18 +31,18 @@
             </div>
 
             <div class="mb-6">
-                <div class="g-recaptcha" data-sitekey="<?php echo e(config('services.recaptcha.key')); ?>"></div>
+                <div class="g-recaptcha" data-sitekey="6Lez7UAUAAAAAKp4qnOA1I6VSK46bn9gQUtJ3aPy"></div>
             </div>
 
-            <div class="flex justify-end">
-                <a href="#" class="btn mr-4 hover:bg-red" @click="$modal.hide('new-thread')">Cancel</a>
-                <button type="submit" class="btn bg-green hover:bg-green-dark">Publish</button>
+            <div class="flex justify-end ">
+                <a href="#" class="btn mr-4 hover:bg-red uppercase text-xs" @click="$modal.hide('new-thread')">Cancel</a>
+                <button type="submit" class="btn bg-green hover:bg-green-dark uppercase text-xs">Publish</button>
             </div>
 
-            <?php if (count($errors)): ?>
+            <?php if(count($errors)): ?>
                 <ul class="alert alert-danger">
-                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach ($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li><?php echo e($error); ?></li>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li class="list-reset text-red"><?php echo e($error); ?></li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>
             <?php endif; ?>
