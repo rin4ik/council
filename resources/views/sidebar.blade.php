@@ -19,7 +19,7 @@
         <ul class="list-reset text-sm">
             <li class="pb-3">
                 <a href="/threads" class="flex items-center text-grey-darkest hover:text-red-light {{ Request::is('threads') && ! Request::query() ? 'text-black-darkest font-bold' : '' }}">
-                    @include ('svgs.icons.all-threads', ['class' => 'mr-3 text-blue-dark'])
+                    @include ('svgs.icons.all-threads', ['class' => 'mr-3 text-grey-darker'])
                    
                             All Threads
               
@@ -49,7 +49,7 @@
 
             <li>
                 <a href="/threads?unanswered=1" class="flex items-center text-grey-darkest hover:text-red-light  {{ Request::query('unanswered') ? 'text-black-darkest font-bold' : '' }}">
-                    @include ('svgs.icons.question', ['class' => 'mr-3 text-grey-darker'])
+                    @include ('svgs.icons.question', ['class' => 'mr-3 text-grey-dark'])
                     Unanswered Threads
                 </a>
             </li>
@@ -60,7 +60,7 @@
         <div class="widget">
             <h4 class="widget-heading">Trending</h4>
 
-            <ul class="p-0 pl-4 text-blue mr-1 mb-5">
+            <ul class="p-0 pl-4 text-grey-dark mr-1 mb-5">
                 @foreach ($trending as $thread)
                     <li class="pb-3 text-sm mb-2">
                         <a href="{{ url($thread->path) }}" class="hover:text-red-light no-underline text-grey-darkest ">
