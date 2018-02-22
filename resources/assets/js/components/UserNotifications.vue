@@ -1,6 +1,6 @@
 <template>
     <div @mouseover="active = true" @mouseout="active = false">
-       <div class="rounded-full bg-blue-darkest w-10 h-10 flex items-center justify-center mr-4 cursor-pointer relative z-10">
+       <div class="rounded-full bg-blue-darkest w-8 h-8 flex items-center justify-center mr-4 cursor-pointer relative z-10">
             <!-- "New Notifications Available" bubble. -->
             <div class="rounded-full bg-red w-3 mr-2 h-3 absolute pin-t pin-r mt-2" v-if="notifications.length"></div>
 

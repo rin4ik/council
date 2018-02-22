@@ -10,7 +10,7 @@
         </div>
 
         <div class="flex" v-cloak>
-                <div class="search-wrap rounded-full bg-blue-darkest w-10 cursor-pointer h-10 flex items-center justify-center mr-4 relative" @mouseover="search" @mouseout="searching = false">
+                <div class="search-wrap rounded-full bg-blue-darkest w-8 cursor-pointer h-8 flex items-center justify-center mr-4 relative" @mouseover="search" @mouseout="searching = false">
                     <form method="GET" action="/threads/search" v-show="searching">
                         <input type="text"
                                placeholder="Search for something..."
@@ -29,7 +29,7 @@
                 <div>
                     <dropdown >
                         <div  slot="heading"
-                             class="rounded-full bg-blue-darkest w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
+                             class="rounded-full bg-blue-darkest w-8 h-8 flex items-center justify-center cursor-pointer relative z-10"
                         >
                             <img src="{{ auth()->user()->avatar_path }}"
                                  alt="{{ auth()->user()->username }}"
