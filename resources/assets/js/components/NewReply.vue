@@ -1,5 +1,5 @@
 <template>
-    <div class="py-6 ml-10">
+    <div class="py-6">
         <div v-if="! signedIn">
             <p class="text-center text-sm text-grey-dark">
                 Please <a href="/login" @click.prevent="$modal.show('login')" class="text-blue link">sign in</a> to participate in this
@@ -17,7 +17,7 @@
             </div>
 
             <button type="submit"
-                    class="btn bg-green hover:bg-green-dark"
+                    class="uppercase pr-4 pl-4 btn bg-green-light hover:bg-green-dark"
                     @click="addReply">Post</button>
         </div>
     </div>

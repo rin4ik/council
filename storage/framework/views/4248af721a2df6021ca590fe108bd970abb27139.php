@@ -12,8 +12,8 @@
             </div>
 
             <div class="flex justify-end items-center">
-                <button type="submit" class="btn is-green mr-4" :class="loading ? 'loader' : ''" :disabled="loading">Log In</button>
-                <a href="#" class="text-xs text-grey-dark link" @click="register">or register</a>
+                <button type="submit" class="btn uppercase text-xs bg-blue  mr-4" :class="loading ? 'loader' : ''" :disabled="loading">Log In</button>
+                <a href="#" class="text-xs text-grey-dark no-underline" @click="register">or register</a>
             </div>
 
             <div class="mt-6" v-if="feedback">

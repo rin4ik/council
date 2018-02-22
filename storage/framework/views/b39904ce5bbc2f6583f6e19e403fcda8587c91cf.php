@@ -30,8 +30,8 @@
                 <input type="password" class="w-full p-2 leading-normal" id="password_confirmation" name="password_confirmation" autocomplete="new-password" required v-model="form.password_confirmation" @keydown="errors.password = false">
             </div>
 
-            <div class="flex items-center -mx-4">
-                <button type="submit" class="btn is-green flex-1 mx-4" :class="loading ? 'loader' : ''" :disabled="loading">Register</button>
+            <div class="flex justify-center">
+                <button type="submit" class="btn bg-blue center  uppercase text-xs " :class="loading ? 'loader' : ''" :disabled="loading">Register</button>
             </div>
 
             <div class="mt-6" v-if="feedback">

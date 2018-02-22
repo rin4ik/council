@@ -10,18 +10,17 @@
         </div>
 
         <div class="flex" v-cloak>
-            <div class="search-wrap rounded-full bg-blue-darkest w-10 cursor-pointer h-10 flex items-center justify-center mr-4 relative" @mouseover="search" @mouseout="searching = false">
-                <form method="GET" action="/threads/search" v-show="searching">
-                    <input type="text"
-                           placeholder="Search for something..."
-                           name="q"
-                           ref="search"
-                           class="search-input absolute pin-r pin-t h-full rounded bg-red-light border-none pl-6 pr-10 text-white">
-                           <button type="submit">s</button>
-                </form>
-
-                @include('svgs.icons.search')
-            </div>
+                <div class="search-wrap rounded-full bg-blue-darkest w-10 cursor-pointer h-10 flex items-center justify-center mr-4 relative" @mouseover="search" @mouseout="searching = false">
+                    <form method="GET" action="/threads/search" v-show="searching">
+                        <input type="text"
+                               placeholder="Search for something..."
+                               name="q"
+                               ref="search"
+                               class="search-input absolute pin-r pin-t h-full rounded bg-blue-darkest border-none pl-6 pr-10 text-white">
+                    </form>
+    
+                    @include('svgs.icons.search')
+                </div>
 
             @if (auth()->check())
                 <user-notifications></user-notifications>

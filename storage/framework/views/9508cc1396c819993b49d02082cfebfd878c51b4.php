@@ -3,7 +3,7 @@
         <div>
             <h1 class="font-normal text-2xl">
                 <a href="/" class="text-blue-lightest flex items-center">
-                    <?php echo $__env->make('svgs.logo', ['class' => 'mr-2'], array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    <?php echo $__env->make('svgs.logo', ['class' => 'mr-2'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     <?php echo e(config('app.name', 'Council')); ?>
 
                 </a>
@@ -11,20 +11,19 @@
         </div>
 
         <div class="flex" v-cloak>
-            <div class="search-wrap rounded-full bg-blue-darkest w-10 cursor-pointer h-10 flex items-center justify-center mr-4 relative" @mouseover="search" @mouseout="searching = false">
-                <form method="GET" action="/threads/search" v-show="searching">
-                    <input type="text"
-                           placeholder="Search for something..."
-                           name="q"
-                           ref="search"
-                           class="search-input absolute pin-r pin-t h-full rounded bg-red-light border-none pl-6 pr-10 text-white">
-                           <button type="submit">s</button>
-                </form>
+                <div class="search-wrap rounded-full bg-blue-darkest w-10 cursor-pointer h-10 flex items-center justify-center mr-4 relative" @mouseover="search" @mouseout="searching = false">
+                    <form method="GET" action="/threads/search" v-show="searching">
+                        <input type="text"
+                               placeholder="Search for something..."
+                               name="q"
+                               ref="search"
+                               class="search-input absolute pin-r pin-t h-full rounded bg-blue-darkest border-none pl-6 pr-10 text-white">
+                    </form>
+    
+                    <?php echo $__env->make('svgs.icons.search', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                </div>
 
-                <?php echo $__env->make('svgs.icons.search', array_except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            </div>
-
-            <?php if (auth()->check()): ?>
+            <?php if(auth()->check()): ?>
                 <user-notifications></user-notifications>
 
                 
@@ -43,7 +42,7 @@
                                 <a class="hover:text-red-light no-underline" href="<?php echo e(route('profile', Auth::user())); ?>">My Profile</a>
                             </li>
 
-                            <?php if (Auth::user()->isAdmin()): ?>
+                            <?php if(Auth::user()->isAdmin()): ?>
                                 <li class="text-sm pb-3">
                                     <a class="hover:text-red-light no-underline" href="<?php echo e(route('admin.dashboard.index')); ?>">Admin</a>
                                 </li>

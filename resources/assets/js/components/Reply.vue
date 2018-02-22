@@ -23,7 +23,7 @@
                         <a v-if="! editing && (authorize('owns', reply) || authorize('owns', reply.thread))"
                            href="#"
                            @click.prevent="editing = true"
-                           class="text-blue text-xs no-underline ml-2 pl-2 border-l"
+                           class="text-yellow-darker text-xs no-underline ml-2 pl-2 border-l"
                         >
                             EDIT
                         </a>
