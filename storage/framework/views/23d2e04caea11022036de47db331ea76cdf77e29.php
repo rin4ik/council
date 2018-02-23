@@ -23,9 +23,9 @@
     <button type="submit" class="btn bg-blue"><?php echo e($buttonText ?? 'Add Channel'); ?></button>
 </div>
 
-<?php if(count($errors)): ?>
+<?php if (count($errors)): ?>
     <ul class="alert alert-danger">
-        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach ($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <li><?php echo e($error); ?></li>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </ul>
