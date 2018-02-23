@@ -2,7 +2,7 @@
     <div @mouseover="active = true" @mouseout="active = false">
        <div class="rounded-full bg-blue-darkest w-8 h-8 flex items-center justify-center mr-4 cursor-pointer relative z-10">
             <!-- "New Notifications Available" bubble. -->
-            <div class="rounded-full bg-red w-3 mr-2 h-3 absolute pin-t pin-r mt-2" v-if="notifications.length"></div>
+            <div class="rounded-full bg-red w-2  h-2 absolute pin-t pin-r " v-if="notifications.length"></div>
 
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" class="fill-current">
                 <g fill="none" fill-rule="evenodd"  >
@@ -17,8 +17,8 @@
                 <span class="glyphicon glyphicon-bell"></span>
             </a>
 
-            <div class="bg-grey-light p-6 text-black absolute rounded"
-                 style="border-top-right-radius: 28px 22px; width: 313px; top: -32px; right: 23px"
+            <div class="bg-grey-light p-3 text-black absolute rounded"
+                 style="border-top-right-radius: 12px 12px; width: 280px; top: -32px; right: 23px"
             >
                 <h4 class="mb-4">Notifications</h4>
 
