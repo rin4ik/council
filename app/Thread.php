@@ -79,6 +79,14 @@ class Thread extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function unsetBestReply()
+    {
+        if ($this->hasBestReply()) {
+            $this->bestReply->owner->loseReputation('best_reply_awarded');
+            $this->update(['best_reply_id' => null]);
+        }
+    }
+
     /**
      * Get the title for the thread.
      */
@@ -188,7 +196,7 @@ class Thread extends Model
      */
     public function getIsSubscribedToAttribute()
     {
-        if (! auth()->id()) {
+        if (!auth()->id()) {
             return false;
         }
 
@@ -268,7 +276,7 @@ class Thread extends Model
      */
     public function hasBestReply()
     {
-        return ! is_null($this->best_reply_id);
+        return !is_null($this->best_reply_id);
     }
 
     /**

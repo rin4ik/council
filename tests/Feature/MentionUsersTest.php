@@ -16,23 +16,17 @@ class MentionUsersTest extends TestCase
     public function mentioned_users_in_a_thread_are_notified()
     {
         // Given we have a user, JohnDoe, who is signed in.
-        $john = create('App\User', ['username' => 'JohnDoe']);
-
+        $john = create(\App\User::class, ['username' => 'JohnDoe']);
         $this->signIn($john);
-
         // And we also have a user, JaneDoe.
-        $jane = create('App\User', ['username' => 'JaneDoe']);
-
+        $jane = create(\App\User::class, ['username' => 'JaneDoe']);
         // And JohnDoe create a new thread and mentions @JaneDoe.
-        $thread = make('App\Thread', [
+        $thread = make(\App\Thread::class, [
             'body' => 'Hey @JaneDoe check this out.'
         ]);
-
         $this->post(route('threads'), $thread->toArray() + ['g-recaptcha-response' => 'token']);
-
         // Then @JaneDoe should receive a notification.
         $this->assertCount(1, $jane->notifications);
-
         $this->assertEquals(
             "JohnDoe mentioned you in \"{$thread->title}\"",
             $jane->notifications->first()->data['message']
